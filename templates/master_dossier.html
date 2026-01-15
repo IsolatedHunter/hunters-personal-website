@@ -8,121 +8,138 @@
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&family=Inter:wght@400;700;900&display=swap');
 
+        /* RESET & PRINT CONTROLS */
         @media print {
-            body { background: white !important; padding: 0 !important; }
+            body { background: white !important; padding: 0 !important; margin: 0 !important; }
             .no-print { display: none !important; }
-            .page-break { page-break-before: always !important; display: block; }
-            .master-container { box-shadow: none !important; border: none !important; width: 100% !important; max-width: none !important; padding: 0.5in !important; }
-            .transcript-row { break-inside: avoid; }
             
-            /* Ensure the PDF iframe takes up the full first page when printing */
-            .resume-container { height: 10.5in !important; border: none !important; }
+            /* Forces the browser to start a new physical page */
+            .page-break { 
+                page-break-before: always !important; 
+                display: block; 
+                clear: both;
+            }
+
+            .master-container { 
+                box-shadow: none !important; 
+                border: none !important; 
+                width: 100% !important; 
+                max-width: none !important; 
+                padding: 0 !important; /* Full bleed for PDF */
+            }
+
+            /* Fixes the Transcript Table from cutting off */
+            .transcript-row { 
+                break-inside: avoid !important; 
+                page-break-inside: avoid !important; 
+            }
+
+            /* Forces the Resume Iframe to be a full page */
+            .resume-section { height: 100vh !important; }
+            iframe { height: 100% !important; border: none !important; }
         }
 
-        body { font-family: 'Inter', sans-serif; color: #111; }
+        body { font-family: 'Inter', sans-serif; color: #111; background-color: #f1f5f9; }
         .mono { font-family: 'Roboto Mono', monospace; }
-        .master-container { max-width: 8.5in; margin: 0 auto; background: white; padding: 50px; }
+        .master-container { max-width: 8.5in; margin: 0 auto; background: white; min-height: 11in; }
 
-        /* Transcript Specific Styling */
+        /* TRANSCRIPT STYLING */
         .transcript-table { width: 100%; border-collapse: collapse; font-size: 0.75rem; }
-        .transcript-header { border-bottom: 2px solid black; text-align: left; font-weight: 900; text-transform: uppercase; }
-        .transcript-row { border-bottom: 1px solid #e2e8f0; }
-        .transcript-row td { padding: 10px 6px; vertical-align: top; }
+        .transcript-header { border-bottom: 2px solid #000; text-align: left; font-weight: 900; }
+        .transcript-row { border-bottom: 1px solid #edf2f7; }
+        .transcript-row td { padding: 12px 8px; vertical-align: top; }
 
-        /* Full Story Styling */
-        .prose-block h4 { font-weight: 900; text-transform: uppercase; margin-top: 1.5rem; color: #2563eb; font-size: 0.8rem; }
-        .prose-block blockquote { font-style: italic; border-left: 4px solid #e2e8f0; padding-left: 1rem; margin: 1.5rem 0; color: #475569; }
+        /* NARRATIVE STYLING */
+        .prose-block h4 { font-weight: 800; text-transform: uppercase; margin-top: 1.5rem; color: #1d4ed8; font-size: 0.8rem; }
+        .prose-block blockquote { font-style: italic; border-left: 4px solid #cbd5e1; padding: 1rem; margin: 1.5rem 0; background: #f8fafc; color: #475569; }
     </style>
 </head>
-<body class="bg-gray-200 p-6 md:p-12">
+<body class="p-0 md:p-8">
 
-    <div class="no-print max-w-4xl mx-auto mb-8 flex justify-between items-center bg-black text-white p-4 rounded-2xl shadow-2xl">
-        <div class="pl-4">
-            <h2 class="font-black uppercase tracking-widest text-sm">Master Dossier Mode</h2>
-            <p class="text-[10px] text-gray-400">Includes PDF Resume + Live Transcript + Portfolio Stories</p>
+    <div class="no-print max-w-4xl mx-auto mb-6 flex justify-between items-center bg-gray-900 text-white p-4 rounded-xl shadow-xl">
+        <div class="flex items-center gap-3">
+            <i class="fas fa-file-invoice text-blue-400 text-xl"></i>
+            <div>
+                <h2 class="font-black uppercase text-xs">Hunter Bradshaw</h2>
+                <p class="text-[10px] text-gray-400">Master Dossier (PDF + Transcript + Stories)</p>
+            </div>
         </div>
-        <button onclick="window.print()" class="bg-blue-600 hover:bg-blue-700 text-white px-6 py-2 rounded-xl font-bold transition">
-            <i class="fas fa-print mr-2"></i> Print to PDF
+        <button onclick="window.print()" class="bg-blue-600 hover:bg-blue-700 px-6 py-2 rounded-lg font-bold text-sm transition shadow-lg">
+            <i class="fas fa-print mr-2"></i> Print Dossier
         </button>
     </div>
 
-    <div class="master-container shadow-2xl bg-white">
+    <div class="master-container shadow-2xl">
         
-        <section class="mb-20">
-            <div class="flex justify-between items-center mb-4 border-b border-gray-100 pb-2">
-                <h2 class="text-xs font-black uppercase tracking-[0.3em] text-gray-400">Attached Professional Resume</h2>
-                <span class="text-[10px] mono text-gray-300">File: Hunter_Bradshaws_Resume.pdf</span>
-            </div>
-            <div class="resume-container w-full h-[1050px] border-4 border-gray-50 rounded-lg overflow-hidden bg-gray-100 shadow-inner">
-                <iframe 
-                    src="{{ url_for('static', filename='Hunter_Bradshaws_Resume.pdf') }}#view=FitH" 
-                    width="100%" 
-                    height="100%" 
-                    style="border: none;">
-                </iframe>
-            </div>
+        <section class="resume-section h-[1100px] w-full overflow-hidden">
+            <iframe 
+                src="{{ url_for('static', filename='Hunter_Bradshaws_Resume.pdf') }}#toolbar=0&navpanes=0&scrollbar=0&view=FitH" 
+                width="100%" 
+                height="100%" 
+                class="border-none">
+            </iframe>
         </section>
 
-        <section class="page-break pt-12">
+        <section class="page-break p-12">
             <div class="flex justify-between items-end border-b-4 border-black pb-4 mb-8">
                 <div>
-                    <h2 class="text-3xl font-black uppercase tracking-tighter leading-none">Academic Transcript</h2>
-                    <p class="text-xs font-bold text-gray-400 mt-1 uppercase tracking-widest">University of Texas at San Antonio</p>
+                    <h2 class="text-3xl font-black uppercase tracking-tighter">Academic Transcript</h2>
+                    <p class="text-xs font-bold text-gray-500 uppercase tracking-widest">UTSA College of Sciences</p>
                 </div>
                 <div class="text-right">
-                    <p class="text-[10px] font-black uppercase text-blue-600">Generated: 2026</p>
-                    <p class="text-[10px] font-bold text-gray-400">Student ID: BRADSHAW-H-UTSA</p>
+                    <p class="text-[10px] font-black uppercase text-blue-600 italic">Verified Record: 2026</p>
+                    <p class="text-[10px] font-bold text-gray-400 uppercase tracking-tighter">66 Credits Accounted </p>
                 </div>
             </div>
 
             <table class="transcript-table mono">
                 <thead>
                     <tr class="transcript-header">
-                        <td class="pb-3">Course Code</td>
-                        <td class="pb-3">Course Description</td>
-                        <td class="pb-3 text-center">Term</td>
-                        <td class="pb-3 text-center">Hrs</td>
-                        <td class="pb-3 text-right">Grade</td>
+                        <td class="pb-2">ID</td>
+                        <td class="pb-2">Course Description</td>
+                        <td class="pb-2 text-center">Term</td>
+                        <td class="pb-2 text-center">Hrs</td>
+                        <td class="pb-2 text-right">Grade</td>
                     </tr>
                 </thead>
                 <tbody>
                     {% for course in classes %}
                     <tr class="transcript-row">
-                        <td class="font-bold whitespace-nowrap">{{ course.number }}</td>
-                        <td>
-                            <div class="font-bold uppercase text-gray-900">{{ course.name }}</div>
-                            <div class="text-[10px] text-gray-500 normal-case italic font-sans mt-1 leading-snug">
-                                <span class="font-black text-[8px] text-gray-300 uppercase not-italic mr-1">Key Learning:</span> {{ course.learned }}
+                        <td class="font-bold whitespace-nowrap">{{ course.number }} [cite: 21]</td>
+                        <td class="max-w-md">
+                            <div class="font-black uppercase text-gray-800">{{ course.name }} [cite: 21]</div>
+                            <div class="text-[10px] font-sans text-gray-500 leading-snug mt-1">
+                                <span class="text-[8px] font-black uppercase text-gray-300">Learning:</span> {{ course.learned }} [cite: 21, 28, 29]
                             </div>
                         </td>
-                        <td class="text-center whitespace-nowrap">{{ course.term }}</td>
-                        <td class="text-center">{{ course.credits | default('3.0') }}</td>
-                        <td class="text-right font-black text-blue-600">{{ course.grade }}</td>
+                        <td class="text-center whitespace-nowrap italic">{{ course.term }} </td>
+                        <td class="text-center">{{ course.credits | default('3') }} </td>
+                        <td class="text-right font-black text-blue-700">{{ course.grade }} </td>
                     </tr>
                     {% endfor %}
                 </tbody>
             </table>
 
             <div class="mt-8 pt-4 border-t-2 border-black flex justify-between items-center text-[10px] font-black uppercase tracking-widest">
-                <span>Summary: {{ (classes|length * 3) }} Credits Accounted</span>
-                <span>Standing: Active Academic Merit</span>
+                <span>Standing: Active Academic Merit </span>
+                <span>Institutional Verified: Hunter Bradshaw</span>
             </div>
         </section>
 
         {% for entry in entries %}
-        <section class="page-break pt-12">
+        <section class="page-break p-12">
             <div class="flex justify-between items-start border-b-2 border-gray-100 pb-4 mb-8">
                 <div>
-                    <span class="text-[10px] font-black uppercase tracking-[0.2em] text-blue-600">Dossier Entry / {{ entry.type }}</span>
-                    <h2 class="text-4xl font-black uppercase tracking-tighter leading-none mt-1">{{ entry.title }}</h2>
+                    <span class="text-[10px] font-black uppercase tracking-[0.2em] text-blue-600">Dossier Entry / {{ entry.type }} [cite: 41]</span>
+                    <h2 class="text-4xl font-black uppercase tracking-tighter leading-none mt-1">{{ entry.title }} [cite: 42]</h2>
                 </div>
                 <div class="text-right">
-                    <p class="mono text-sm font-bold">{{ entry.term }}</p>
-                    <p class="text-[10px] font-black uppercase text-gray-400">{{ entry.institution }}</p>
+                    <p class="mono text-sm font-bold">{{ entry.term }} [cite: 44]</p>
+                    <p class="text-[10px] font-black uppercase text-gray-400">{{ entry.institution }} [cite: 109, 131, 147, 163, 187, 212]</p>
                 </div>
             </div>
 
-            <div class="prose-block text-sm leading-relaxed text-justify max-w-3xl mx-auto pb-12">
+            <div class="prose-block text-sm leading-relaxed text-justify max-w-3xl mx-auto">
                 {{ entry.content | safe }}
             </div>
         </section>
@@ -130,8 +147,8 @@
 
     </div>
 
-    <footer class="mt-20 pb-20 text-center text-[10px] font-black uppercase tracking-[0.5em] text-gray-400">
-        End of Master Dossier Report
+    <footer class="mt-12 pb-12 text-center text-[9px] font-black uppercase tracking-[0.4em] text-gray-400 no-print">
+        END OF MASTER DOSSIER REPORT [cite: 237]
     </footer>
 
 </body>
