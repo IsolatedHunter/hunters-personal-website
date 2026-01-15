@@ -1,13 +1,121 @@
 {
-    "projects": {
-        "quantum-physics": {
-            "title": "Numerical Methods in Quantum Mechanics",
+    "entries": [
+        {
+            "type": "project",
+            "title": "Python for Data and Physics",
+            "category": "programming",
+            "tag": "Python",
+            "status": "In Progress",
+            "institution": "Self-study / Online",
+            "term": "Spring 2026",
+            "description": "Learning Python alongside physics courses for data entry, plotting, and simulations.",
+            "content": "<h4>Overview</h4><p>Taking an online Python course while enrolled at UTSA. Applying skills to homework, lab data entry, and small physics simulations. Learning NumPy, Matplotlib, and basic scripting for automation.</p>",
+            "gradient": "from-blue-400 to-green-500",
+            "icon": "fas fa-code"
+        },
+        {
+            "type": "project",
+            "title": "Physics Lab Observation",
             "category": "physics",
-            "tag": "Computational Physics",
-            "description": "Solving the Schrödinger equation for non-standard potentials.",
-            "content": "<h4>Research Overview</h4>...",
-            "gradient": "from-indigo-500 to-purple-600",
-            "icon": "fas fa-wave-square"
+            "tag": "Research Experience",
+            "status": "Completed",
+            "institution": "UTSA",
+            "term": "Fall 2025",
+            "description": "Observing undergraduate research and lab sessions to gain research exposure.",
+            "content": "<h4>Overview</h4><p>Sat in on lab meetings and observations for UTSA physics faculty. Learned lab workflows, experimental setup, and research planning without formal assistantship duties.</p>",
+            "gradient": "from-purple-400 to-indigo-500",
+            "icon": "fas fa-flask"
+        },
+        {
+            "type": "project",
+            "title": "Study Abroad Planning",
+            "category": "international",
+            "tag": "Global Learning",
+            "status": "In Progress",
+            "institution": "UTSA / Greece Program",
+            "term": "Summer 2026",
+            "description": "Planning to study in Athens, Greece for a summer physics program.",
+            "content": "<h4>Overview</h4><p>Researching courses and programs in Athens, Greece. Coordinating with UTSA for course credit transfer. Learning logistics for international study and planning schedules around pre-existing travel plans.</p>",
+            "gradient": "from-yellow-400 to-orange-500",
+            "icon": "fas fa-globe"
+        },
+        {
+            "type": "project",
+            "title": "Protest Poster Design",
+            "category": "leadership",
+            "tag": "Advocacy",
+            "status": "Completed",
+            "institution": "Community",
+            "term": "January 2026",
+            "description": "Designed posters with Sharpies for a community protest.",
+            "content": "<h4>Overview</h4><p>Planned and executed protest posters with clear text and visual design to convey social messages. Learned visual communication and concise messaging.</p>",
+            "gradient": "from-red-400 to-pink-500",
+            "icon": "fas fa-pencil-alt"
+        },
+        {
+            "type": "project",
+            "title": "RYLA Leadership Camp Participation",
+            "category": "leadership",
+            "tag": "Youth Leadership",
+            "status": "Completed",
+            "institution": "RYLA",
+            "term": "Summer 2024",
+            "description": "Attended leadership camp and engaged in teamwork and personal development exercises.",
+            "content": "<h4>Overview</h4><p>Participated in structured leadership activities and problem-solving exercises. Developed communication, teamwork, and personal leadership skills.</p>",
+            "gradient": "from-green-300 to-blue-400",
+            "icon": "fas fa-users"
+        },
+        {
+            "type": "certificate",
+            "title": "Freshman Composition I (WRC 1013)",
+            "category": "academics",
+            "tag": "Core Curriculum",
+            "status": "Completed",
+            "institution": "UTSA",
+            "term": "Fall 2025",
+            "description": "Developed academic writing skills, rhetorical analysis, and argumentation.",
+            "content": "<h4>Course Overview</h4><p>Learned essay structure, research integration, and evidence-based writing. Grade: B+</p>",
+            "gradient": "from-indigo-300 to-indigo-500",
+            "icon": "fas fa-book"
+        },
+        {
+            "type": "certificate",
+            "title": "Calculus I (MAT 1213)",
+            "category": "academics",
+            "tag": "Major Support",
+            "status": "Completed",
+            "institution": "UTSA",
+            "term": "Fall 2025",
+            "description": "Studied limits, derivatives, and applications of differentiation.",
+            "content": "<h4>Course Overview</h4><p>Applied calculus to physics and engineering problems. Grade: A+</p>",
+            "gradient": "from-blue-400 to-blue-600",
+            "icon": "fas fa-square-root-alt"
+        },
+        {
+            "type": "certificate",
+            "title": "Calculus II (MAT 1223)",
+            "category": "academics",
+            "tag": "Major Support",
+            "status": "In Progress",
+            "institution": "UTSA",
+            "term": "Spring 2026",
+            "description": "Integration techniques, sequences, series, and differential equations.",
+            "content": "<h4>Course Overview</h4><p>Building on Calculus I concepts for physics applications. Currently in progress. </p>",
+            "gradient": "from-blue-400 to-blue-600",
+            "icon": "fas fa-square-root-alt"
+        },
+        {
+            "type": "certificate",
+            "title": "Physics for Scientists & Engineers I (PHY 1943)",
+            "category": "academics",
+            "tag": "Major",
+            "status": "In Progress",
+            "institution": "UTSA",
+            "term": "Spring 2026",
+            "description": "Classical mechanics including kinematics, Newton’s laws, work and energy, momentum, and rotational motion.",
+            "content": "<h4>Course Overview</h4><p>Lecture + Lab component (PHY 1951). Applying concepts in lab experiments. In progress.</p>",
+            "gradient": "from-purple-400 to-purple-600",
+            "icon": "fas fa-atom"
         }
-    }
+    ]
 }

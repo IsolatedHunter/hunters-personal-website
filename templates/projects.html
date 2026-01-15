@@ -1,90 +1,127 @@
 {% extends "base.html" %}
 
-{% block title %}Projects | Hunter Bradshaw{% endblock %}
+{% block title %}Portfolio | Hunter Bradshaw{% endblock %}
 
 {% block head %}
     <style>
-        .project-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+        .project-card { transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); display: flex; flex-direction: column; }
         .project-card:hover { transform: translateY(-8px); }
         .filter-btn.active { background-color: #2563eb; color: white; border-color: #2563eb; }
         
-        /* Enforced Spacing for consistency */
-        .pt-32 { padding-top: 4rem !important; }
-        .pb-12 { padding-bottom: 3rem !important; }
+        .pt-32 { padding-top: 8rem !important; }
+        .hidden-card { display: none !important; }
+        
+        .badge-ip { background: #fef9c3; color: #854d0e; }
+        .badge-done { background: #dcfce7; color: #166534; }
     </style>
 {% endblock %}
 
 {% block content %}
     <header class="pt-32 pb-12 px-6 bg-white">
         <div class="max-w-6xl mx-auto">
-            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight">Selected Projects</h1>
-            <p class="text-lg text-gray-600 max-w-2xl">A collection of my work spanning mathematical modeling, physics research, and community-driven initiatives.</p>
+            <h1 class="text-4xl md:text-5xl font-black text-gray-900 mb-4 tracking-tight uppercase">Portfolio & Achievements</h1>
+            <p class="text-lg text-gray-600 max-w-2xl">A curated collection of my academic certifications, physics research, and technical projects.</p>
         </div>
     </header>
 
-    <section class="pb-12 px-6 bg-white border-b border-gray-100">
-        <div class="max-w-6xl mx-auto flex flex-wrap gap-3">
-            <button class="filter-btn active px-5 py-2 rounded-full border border-gray-200 text-sm font-semibold transition" onclick="filterProjects('all', this)">All Projects</button>
-            <button class="filter-btn px-5 py-2 rounded-full border border-gray-200 text-sm font-semibold transition" onclick="filterProjects('physics', this)">Physics & Math</button>
-            <button class="filter-btn px-5 py-2 rounded-full border border-gray-200 text-sm font-semibold transition" onclick="filterProjects('leadership', this)">Leadership & Service</button>
+    <section class="pb-8 px-6 bg-white sticky top-16 z-20 border-b border-gray-100">
+        <div class="max-w-6xl mx-auto flex flex-col gap-4">
+            <div class="flex flex-wrap gap-2">
+                <span class="w-full text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Filter by Type</span>
+                <button class="filter-btn active px-4 py-1.5 rounded-lg border text-xs font-bold transition" onclick="filterEntries('type', 'all', this)">All</button>
+                <button class="filter-btn px-4 py-1.5 rounded-lg border text-xs font-bold transition" onclick="filterEntries('type', 'project', this)">Projects</button>
+                <button class="filter-btn px-4 py-1.5 rounded-lg border text-xs font-bold transition" onclick="filterEntries('type', 'certificate', this)">Certificates</button>
+            </div>
+            
+            <div class="flex flex-wrap gap-2">
+                <span class="w-full text-[10px] font-bold text-gray-400 uppercase tracking-widest mb-1">Filter by Category</span>
+                <button class="cat-btn active px-4 py-1.5 rounded-lg border text-xs font-bold transition bg-gray-50" onclick="filterEntries('cat', 'all', this)">Everything</button>
+                <button class="cat-btn px-4 py-1.5 rounded-lg border text-xs font-bold transition" onclick="filterEntries('cat', 'physics', this)">Physics</button>
+                <button class="cat-btn px-4 py-1.5 rounded-lg border text-xs font-bold transition" onclick="filterEntries('cat', 'programming', this)">Programming</button>
+                <button class="cat-btn px-4 py-1.5 rounded-lg border text-xs font-bold transition" onclick="filterEntries('cat', 'leadership', this)">Leadership</button>
+                <button class="cat-btn px-4 py-1.5 rounded-lg border text-xs font-bold transition" onclick="filterEntries('cat', 'academics', this)">Academics</button>
+            </div>
         </div>
     </section>
 
-    <main class="py-12 px-6">
-        <div class="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="project-grid">
+    <main class="py-12 px-6 bg-gray-50 min-h-screen">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8" id="portfolio-grid">
             
-            {% for project_id, project in projects.items() %}
-            <div class="project-card bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm flex flex-col" data-category="{{ project.category }}">
+            {% for entry in entries %}
+            <div class="project-card bg-white rounded-2xl overflow-hidden border border-gray-200 shadow-sm" 
+                 data-type="{{ entry.type }}" 
+                 data-category="{{ entry.category }}">
                 
-                <div class="h-48 bg-gradient-to-br {{ project.gradient }} flex items-center justify-center p-6 relative">
-                    <i class="{{ project.icon }} text-white text-6xl opacity-30 absolute"></i>
-                    <span class="text-white text-lg font-bold z-10">{{ project.tag }}</span>
+                <div class="h-40 bg-gradient-to-br {{ entry.gradient }} flex items-center justify-center relative p-6">
+                    <i class="{{ entry.icon }} text-white text-7xl opacity-20 absolute left-4 bottom-2"></i>
+                    <div class="z-10 text-center">
+                        <span class="bg-white/20 backdrop-blur-md text-white px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-tighter">
+                            {{ entry.tag }}
+                        </span>
+                    </div>
                 </div>
 
                 <div class="p-6 flex-grow">
-                    <div class="text-xs font-bold text-blue-600 uppercase tracking-widest mb-2">
-                        {{ project.category }}
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="text-[10px] font-black text-blue-600 uppercase tracking-widest">{{ entry.institution }}</span>
+                        <span class="text-[10px] px-2 py-0.5 rounded-md font-bold {{ 'badge-ip' if entry.status == 'In Progress' else 'badge-done' }}">
+                            {{ entry.status }}
+                        </span>
                     </div>
-                    <h3 class="text-xl font-bold mb-3 text-gray-900 leading-tight">
-                        {{ project.title }}
-                    </h3>
-                    <p class="text-sm text-gray-600 mb-4 leading-relaxed">
-                        {{ project.description }}
-                    </p>
+
+                    <h3 class="text-xl font-bold mb-2 text-gray-900 leading-tight">{{ entry.title }}</h3>
+                    <p class="text-sm text-gray-500 line-clamp-3 mb-4">{{ entry.description }}</p>
+                    
+                    <div class="text-[10px] text-gray-400 font-bold uppercase">
+                        <i class="fas fa-calendar-alt mr-1"></i> {{ entry.term }}
+                    </div>
                 </div>
 
-                <div class="p-6 pt-0 mt-auto">
-                    <a href="{{ url_for('project_detail', project_id=project_id) }}" class="text-blue-600 font-bold text-sm flex items-center gap-2 hover:underline">
-                        View Project Details <i class="fas fa-arrow-right text-xs"></i>
+                <div class="px-6 pb-6 mt-auto">
+                    <a href="{{ url_for('project_detail', entry_id=loop.index0) }}" class="group block w-full text-center py-3 bg-gray-900 text-white rounded-xl font-bold text-sm transition hover:bg-blue-600 shadow-md">
+                        View Details <i class="fas fa-chevron-right ml-2 text-[10px] transition-transform group-hover:translate-x-1"></i>
                     </a>
                 </div>
             </div>
             {% endfor %}
-            </div>
+
+        </div>
     </main>
 {% endblock %}
 
 {% block scripts %}
-    <script>
-        function filterProjects(category, btn) {
-            // 1. Update Button UI
-            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
+<script>
+    let currentType = 'all';
+    let currentCat = 'all';
 
-            // 2. Filter Cards
-            const cards = document.querySelectorAll('.project-card');
-            cards.forEach(card => {
-                const cardCategory = card.getAttribute('data-category');
-                
-                if (category === 'all' || cardCategory === category) {
-                    card.classList.remove('hidden-card');
-                    // Small delay for animation
-                    setTimeout(() => { card.style.opacity = "1"; }, 10);
-                } else {
-                    card.style.opacity = "0";
-                    card.classList.add('hidden-card');
-                }
-            });
+    function filterEntries(filterType, value, btn) {
+        // 1. Manage Button Active States
+        if (filterType === 'type') {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active', 'bg-blue-600', 'text-white'));
+            btn.classList.add('active', 'bg-blue-600', 'text-white');
+            currentType = value;
+        } else {
+            document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active', 'bg-blue-600', 'text-white'));
+            btn.classList.add('active', 'bg-blue-600', 'text-white');
+            currentCat = value;
         }
-    </script>
+
+        // 2. Filter Cards
+        const cards = document.querySelectorAll('.project-card');
+        cards.forEach(card => {
+            const cardType = card.getAttribute('data-type');
+            const cardCat = card.getAttribute('data-category');
+            
+            const typeMatch = (currentType === 'all' || cardType === currentType);
+            const catMatch = (currentCat === 'all' || cardCat === currentCat);
+
+            if (typeMatch && catMatch) {
+                card.classList.remove('hidden-card');
+                card.style.opacity = "1";
+            } else {
+                card.classList.add('hidden-card');
+            }
+        });
+    }
+</script>
 {% endblock %}
