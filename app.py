@@ -6,11 +6,11 @@ app = Flask(__name__)
 def home():
     return render_template('index.html')
 
-@app.route('/projects')
+@app.route('/projects', strict_slashes=False)
 def projects():
     return render_template('projects.html')
 
-@app.route('/linktree')
+@app.route('/linktree', strict_slashes=False)
 def linktree():
     return render_template('linktree.html')
 
