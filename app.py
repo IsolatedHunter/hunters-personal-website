@@ -20,9 +20,9 @@ def home():
 
 @app.route('/projects', strict_slashes=False)
 def projects():
-    # Load from projects.json
+    # This looks for the "projects" key we just added to your JSON above
     data = load_json_data('projects.json')
-    all_projects = data.get("projects", {})
+    all_projects = data.get("projects", {}) 
     return render_template('projects.html', projects=all_projects, title="Projects")
 
 @app.route('/projects/<project_id>', strict_slashes=False)
