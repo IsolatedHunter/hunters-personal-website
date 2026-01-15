@@ -1,19 +1,54 @@
 {% extends "base.html" %}
 
-{% block title %}Academics Test{% endblock %}
+{% block title %}Academics | Hunter Bradshaw{% endblock %}
 
-{% block content %}
-<div style="padding-top: 100px; max-width: 800px; margin: 0 auto;">
-    <h1>Academic Test Page</h1>
-    <p>If you see this, the connection to base.html is working.</p>
-    
-    <ul>
-    {% for course in classes %}
-        <li>{{ course.number }}: {{ course.name }}</li>
-    {% endfor %}
-    </ul>
-</div>
+{% block head %}
+    <style>
+        .class-card { transition: all 0.3s ease; border-left: 4px solid #cbd5e1; }
+        .class-card:hover { transform: translateX(5px); border-left-color: #2563eb; }
+        .status-passed { background-color: #dcfce7; color: #166534; }
+        .status-in-progress { background-color: #fef9c3; color: #854d0e; }
+        
+        .pt-32 { padding-top: 4rem !important; }
+        .pb-12 { padding-bottom: 3rem !important; }
+    </style>
 {% endblock %}
 
-{% block scripts %}
+{% block content %}
+    <header class="pt-32 pb-12 px-6 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4 tracking-tight">Academic Coursework</h1>
+            <p class="text-lg text-gray-600 max-w-2xl">A log of my studies in Physics, Mathematics, and Computer Science.</p>
+        </div>
+    </header>
+
+    <main class="py-12 px-6 bg-gray-50 min-h-screen">
+        <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-6">
+            
+            {% for course in classes %}
+            <div class="class-card bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex flex-col justify-between">
+                <div>
+                    <div class="flex justify-between items-start mb-4">
+                        <span class="text-sm font-mono font-bold text-blue-600 tracking-wider">{{ course.number }}</span>
+                        <span class="text-xs px-3 py-1 rounded-full font-bold uppercase tracking-tight 
+                            {{ 'status-passed' if course.status == 'Passed' else 'status-in-progress' }}">
+                            {{ course.status }}
+                        </span>
+                    </div>
+                    
+                    <h3 class="text-xl font-bold text-gray-900 mb-1">{{ course.name }}</h3>
+                    <p class="text-sm text-gray-500 mb-4 italic">Instructor: {{ course.professor }}</p>
+                    
+                    <div class="space-y-2">
+                        <h4 class="text-xs font-bold uppercase text-gray-400 tracking-widest">Key Learnings</h4>
+                        <p class="text-gray-700 text-sm leading-relaxed">
+                            {{ course.learned }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+    </main>
 {% endblock %}

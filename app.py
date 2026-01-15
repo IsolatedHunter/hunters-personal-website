@@ -1,60 +1,61 @@
 import json
 import os
-from flask import Flask, render_template, url_for, abort
+from flask import Flask, render_template, abort
 
 app = Flask(__name__)
 
-def get_site_data():
-    base_dir = os.path.dirname(os.path.abspath(__file__))
-    file_path = os.path.join(base_dir, 'data.json')
-    
-    if not os.path.exists(file_path):
-        print(f"FILE NOT FOUND: {file_path}")
+# --- Data Management ---
+# We load the data once at the global level to improve performance
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_FILE = os.path.join(BASE_DIR, 'data.json')
+
+def load_static_data():
+    """Helper to load the JSON file with error handling."""
+    if not os.path.exists(DATA_FILE):
+        return {"projects": {}, "classes": []}
+    try:
+        with open(DATA_FILE, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    except (json.JSONDecodeError, IOError):
         return {"projects": {}, "classes": []}
 
-    try:
-        with open(file_path, 'r', encoding='utf-8') as f:
-            return json.load(f)
-    except Exception as e:
-        print(f"JSON LOAD ERROR: {e}")
-        return {"projects": {}, "classes": []}
+# Load data into memory when the server starts
+site_data = load_static_data()
+
+# --- Routes ---
 
 @app.route('/')
 def home():
-    # Pass a title just in case base.html needs it
     return render_template('index.html', title="Home")
 
-@app.route('/projects', strict_slashes=False)
+@app.route('/projects')
 def projects():
-    data = get_site_data()
-    return render_template('projects.html', projects=data.get("projects", {}), title="Projects")
+    # Access the projects dictionary from our loaded data
+    project_list = site_data.get("projects", {})
+    return render_template('projects.html', projects=project_list, title="Projects")
 
-@app.route('/projects/<project_id>', strict_slashes=False)
+@app.route('/projects/<project_id>')
 def project_detail(project_id):
-    data = get_site_data()
-    project = data.get("projects", {}).get(project_id)
+    project = site_data.get("projects", {}).get(project_id)
     if not project:
         abort(404)
-    # Pass the project title to the browser tab
     return render_template('project_detail.html', project=project, title=project.get('title'))
 
-@app.route('/academics', strict_slashes=False)
+@app.route('/academics')
 def academics():
-    # TEST MODE: Hardcoded data to isolate HTML issues
-    test_classes = [{"number": "101", "name": "Test", "professor": "T", "status": "Passed", "learned": "Test"}]
-    return render_template('academics.html', classes=test_classes, title="Academics")
+    # Pass the list of classes directly to the new template
+    course_list = site_data.get("classes", [])
+    return render_template('academics.html', classes=course_list, title="Academics")
 
-@app.route('/linktree', strict_slashes=False)
+@app.route('/linktree')
 def linktree():
     return render_template('linktree.html', title="Links")
+
+# --- Error Handling ---
 
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('error.html', error_code=404, error_message="Page not found."), 404
-
-# @app.errorhandler(500)
-# def server_error(e):
-#     return render_template('error.html', error_code=500, error_message="Internal server error."), 500
 
 if __name__ == '__main__':
     app.run(debug=True)
