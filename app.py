@@ -47,9 +47,9 @@ def linktree():
 def page_not_found(e):
     return render_template('error.html', error_code=404, error_message="Page not found."), 404
 
-@app.errorhandler(500)
-def server_error(e):
-    return render_template('error.html', error_code=500, error_message="Internal server error."), 500
+#@app.errorhandler(500)
+#def server_error(e):
+#    return render_template('error.html', error_code=500, error_message="Internal server error."), 500
 
 if __name__ == '__main__':
     app.run(debug=True)
