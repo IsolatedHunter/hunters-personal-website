@@ -18,10 +18,21 @@
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800 font-sans min-h-screen flex flex-col items-center px-6 py-12">
-
+    <nav class="fixed w-full bg-white/90 backdrop-blur-md z-50 shadow-sm">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <span class="text-xl font-bold tracking-tighter text-blue-600">HunterHQ</span>
+            <div class="hidden md:flex space-x-8 text-sm font-medium">
+                <a href="{{ url_for('home') }}#about" class="hover:text-blue-600 transition">About</a>
+                <a href="{{ url_for('home') }}#experience" class="hover:text-blue-600 transition">Experience</a>
+                <a href="{{ url_for('projects') }}" class="hover:text-blue-600 transition">Projects</a>
+                <a href="{{ url_for('linktree') }}" class="hover:text-blue-600 transition">Linktree</a>
+            </div>
+            <a href="mailto:hunter.bradshaw@my.utsa.edu" class="bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-blue-700 transition">Hire Me</a>
+        </div>
+    </nav>
     <div class="flex flex-col items-center mb-10 text-center">
         <div class="w-24 h-24 rounded-full overflow-hidden shadow-lg border-4 border-white mb-4 bg-gray-200">
-            <img src="../Hunter_Bradshaws_Photo.JPG" 
+            <img src="{{ url_for('static', filename='Hunter_Bradshaws_Photo.JPG') }}" 
                 alt="Hunter Bradshaw" 
                 class="w-full h-full object-cover"
                 style="image-rendering: -webkit-optimize-contrast; image-rendering: high-quality;">
