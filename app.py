@@ -35,9 +35,19 @@ def project_detail(project_id):
 
 @app.route('/academics', strict_slashes=False)
 def academics():
-    data = get_site_data()
-    # Pass the list specifically as 'classes'
-    return render_template('academics.html', classes=data.get("classes", []))
+    try:
+        data = get_site_data()
+        # Debugging: This will print to your terminal so you can see if data exists
+        print(f"DEBUG: Classes found: {len(data.get('classes', []))}")
+        
+        # Explicitly fetch the list. If it's missing, use an empty list []
+        course_list = data.get("classes", [])
+        
+        return render_template('academics.html', classes=course_list)
+    except Exception as e:
+        # This logs the EXACT error to your terminal
+        print(f"CRITICAL ERROR in /academics: {e}")
+        return abort(500)
 
 @app.route('/linktree', strict_slashes=False)
 def linktree():
