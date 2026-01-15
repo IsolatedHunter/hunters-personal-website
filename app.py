@@ -16,6 +16,22 @@ def get_site_data():
         print(f"Error: Could not load data.json. {e}")
         return {"projects": {}, "classes": []}
 
+def get_site_data():
+    # Force Python to look in the exact folder where app.py lives
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    file_path = os.path.join(base_dir, 'data.json')
+    
+    if not os.path.exists(file_path):
+        print(f"FILE NOT FOUND: {file_path}")
+        return {"projects": {}, "classes": []}
+
+    try:
+        with open(file_path, 'r', encoding='utf-8') as f:
+            return json.load(f)
+    except Exception as e:
+        print(f"JSON LOAD ERROR: {e}")
+        return {"projects": {}, "classes": []}
+
 @app.route('/')
 def home():
     return render_template('index.html')
