@@ -4,8 +4,8 @@
             "title": "Numerical Methods in Quantum Mechanics",
             "category": "physics",
             "tag": "Computational Physics",
-            "description": "Solving the Schrödinger equation...",
-            "content": "<p>Content here...</p>",
+            "description": "Solving the Schrödinger equation for non-standard potentials using Python and NumPy.",
+            "content": "<h4>Research Overview</h4><p>This project involved developing a Python-based solver for the time-independent Schrödinger equation.</p>",
             "gradient": "from-indigo-500 to-purple-600",
             "icon": "fas fa-wave-square"
         }
@@ -16,14 +16,14 @@
             "name": "Modern Physics",
             "professor": "Dr. Silva",
             "status": "In Progress",
-            "learned": "Special relativity and wave-particle duality."
+            "learned": "Special relativity, wave-particle duality, and an introduction to the Schrödinger equation."
         },
         {
             "number": "MAT 1214",
             "name": "Calculus I",
             "professor": "Dr. Smith",
             "status": "Passed",
-            "learned": "Foundations of limits and derivatives."
+            "learned": "Limits, derivatives, and the fundamental theorem of calculus with applications to physical systems."
         }
     ]
 }
