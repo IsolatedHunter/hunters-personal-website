@@ -4,12 +4,13 @@
 
 {% block head %}
     <style>
+        /* --- Web View Styles --- */
         .pt-32 { padding-top: 8rem !important; }
         .course-group { transition: all 0.3s ease; }
         .lecture-card { border-left: 4px solid #2563eb; }
         .lab-card { border-left: 4px solid #94a3b8; margin-left: 2rem; background-color: #f8fafc; }
         
-        /* Filter Styles */
+        /* Filter Select Styling */
         .filter-select { 
             appearance: none;
             background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
@@ -22,25 +23,71 @@
         .status-ip { color: #854d0e; background: #fef9c3; }
         .hidden-course { display: none !important; }
 
-        /* PRINT STYLES - This formats the PDF */
+        /* --- PDF / Print Styles --- */
         @media print {
+            /* Hide all web UI elements */
             nav, footer, .filter-nav, header, .course-group, .download-btn-container {
                 display: none !important;
             }
-            body { background: white !important; }
+
+            /* Reset body for physical paper */
+            body { 
+                background: white !important; 
+                margin: 0; 
+                padding: 0; 
+                -webkit-print-color-adjust: exact; 
+            }
+            
             #print-transcript {
                 display: block !important;
                 color: black;
                 font-family: "Times New Roman", Times, serif;
-                line-height: 1.4;
+                padding: 0.5in;
+                position: relative;
             }
-            .print-header { text-align: center; border-bottom: 2px solid black; margin-bottom: 20px; padding-bottom: 10px; }
-            .print-section-title { font-weight: bold; text-transform: uppercase; border-bottom: 1px solid #000; margin: 15px 0 5px 0; }
-            table { width: 100%; border-collapse: collapse; margin-top: 10px; font-size: 10pt; }
-            th, td { border: 1px solid #333; padding: 6px; text-align: left; }
-            th { background-color: #eee !important; }
+
+            /* Professional Resume/CV Header */
+            .print-header { 
+                text-align: center; 
+                border-bottom: 2px solid black; 
+                margin-bottom: 20px; 
+                padding-bottom: 10px;
+            }
+            .print-section-title { 
+                font-weight: bold; 
+                text-transform: uppercase; 
+                border-bottom: 1px solid #000; 
+                margin: 15px 0 8px 0; 
+                font-size: 12pt;
+            }
+            
+            /* Table formatting for Course Record */
+            table { 
+                width: 100%; 
+                border-collapse: collapse; 
+                margin-top: 10px; 
+                font-size: 9pt; 
+                page-break-inside: auto;
+            }
+            tr { page-break-inside: avoid; page-break-after: auto; }
+            th, td { border: 1px solid #444; padding: 6px; text-align: left; }
+            th { background-color: #f2f2f2 !important; font-weight: bold; }
+
+            /* Fixed Footer for Page Bottom */
+            .print-footer {
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                text-align: center;
+                font-size: 8pt;
+                color: #555;
+                padding: 10px 0;
+                background: white;
+            }
         }
 
+        /* Keep print section hidden while browsing */
         @media screen {
             #print-transcript { display: none; }
         }
@@ -52,10 +99,10 @@
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
             <div>
                 <h1 class="text-4xl font-black text-gray-900 mb-2">Academic Transcript</h1>
-                <p class="text-gray-600">Physics & Mathematics • Multi-Institution Record</p>
+                <p class="text-gray-600">Physics & Mathematics • Multi-Institution Record [cite: 11]</p>
             </div>
             <div class="download-btn-container">
-                <button onclick="window.print()" class="bg-blue-600 text-white px-6 py-2.5 rounded-xl font-bold hover:bg-blue-700 transition shadow-lg flex items-center gap-2">
+                <button onclick="prepareAndPrint()" class="bg-blue-600 text-white px-6 py-2.5 rounded-xl font-bold hover:bg-blue-700 transition shadow-lg flex items-center gap-2">
                     <i class="fas fa-file-pdf"></i> Download PDF
                 </button>
             </div>
@@ -124,21 +171,21 @@
                 <div class="p-5">
                     <div class="flex justify-between items-start mb-2">
                         <div>
-                            <span class="text-xs font-mono font-bold text-blue-600 uppercase">{{ course.number }}</span>
-                            <h3 class="text-lg font-bold text-gray-900">{{ course.name }}</h3>
+                            <span class="text-xs font-mono font-bold text-blue-600 uppercase">{{ course.number }} [cite: 13]</span>
+                            <h3 class="text-lg font-bold text-gray-900">{{ course.name }} [cite: 13]</h3>
                         </div>
                         <span class="text-[10px] px-2 py-1 rounded font-black uppercase {{ 'status-passed' if course.status == 'Passed' else 'status-ip' }}">
-                            {{ course.status }}
+                            {{ course.status }} [cite: 13]
                         </span>
                     </div>
 
-                    <p class="text-sm text-gray-600 mb-4">{{ course.learned }}</p>
+                    <p class="text-sm text-gray-600 mb-4">{{ course.learned }} [cite: 13]</p>
 
                     <div class="flex flex-wrap gap-4 mt-4 pt-4 border-t border-gray-50 text-[10px] font-bold uppercase tracking-widest text-gray-400">
-                        <span><i class="fas fa-calendar mr-1"></i> {{ course.term }}</span>
-                        <span><i class="fas fa-university mr-1"></i> {{ course.university }}</span>
-                        <span><i class="fas fa-graduation-cap mr-1"></i> {{ course.credits }} Credits</span>
-                        <span class="text-blue-500">{{ course.category }}</span>
+                        <span><i class="fas fa-calendar mr-1"></i> {{ course.term }} [cite: 13]</span>
+                        <span><i class="fas fa-university mr-1"></i> {{ course.university }} [cite: 13]</span>
+                        <span><i class="fas fa-graduation-cap mr-1"></i> {{ course.credits }} Credits [cite: 13]</span>
+                        <span class="text-blue-500">{{ course.category }} [cite: 13]</span>
                     </div>
                 </div>
             </div>
@@ -148,83 +195,107 @@
 
     <div id="print-transcript">
         <div class="print-header">
-            <h1 style="margin-bottom: 5px;">HUNTER BRADSHAW</h1>
-            <p style="margin: 0; font-size: 10pt;">hunter.bradshaw@my.utsa.edu | [Your Phone Number]</p>
-            <p style="margin: 0; font-size: 10pt;">hunterhq.me | San Antonio, TX</p>
+            <h1 style="margin: 0; font-size: 24pt;">HUNTER BRADSHAW [cite: 4]</h1>
+            <p style="margin: 2px 0; font-size: 10pt;">hunter.bradshaw@my.utsa.edu [cite: 7] | hunterhq.me [cite: 7]</p>
+            <p style="margin: 0; font-size: 10pt;">San Antonio, TX [cite: 7]</p>
         </div>
 
         <div class="print-section-title">Academic Summary</div>
-        <p style="font-size: 10pt;">Physics & Mathematics Undergraduate student with a focus on computational modeling and research. This document serves as a verified record of coursework completed across the University of Texas System and Angelo State University.</p>
+        <p style="font-size: 10.5pt;">Physics & Mathematics Undergraduate student with a focus on computational modeling and research[cite: 10]. This document serves as a verified record of coursework completed across the University of Texas System and Angelo State University[cite: 11].</p>
 
-        <div class="print-section-title">Full Course Record</div>
+        <div class="print-section-title">Education</div>
+        <div style="font-size: 10.5pt; display: flex; justify-content: space-between; font-weight: bold; margin-bottom: 2px;">
+            <span>University of Texas at San Antonio [cite: 13]</span>
+            <span>Expected 2027</span>
+        </div>
+        <p style="font-size: 10.5pt; margin: 0; font-style: italic;">B.S. in Physics, Minor in Mathematics</p>
+
+        <div class="print-section-title">Full Course Record [cite: 12]</div>
         <table>
             <thead>
                 <tr>
-                    <th>Number</th>
-                    <th>Course Name</th>
-                    <th>Term</th>
-                    <th>Credits</th>
-                    <th>Status</th>
-                    <th>Institution</th>
+                    <th>Number [cite: 13]</th>
+                    <th>Course Name [cite: 13]</th>
+                    <th>Term [cite: 13]</th>
+                    <th>Cr. [cite: 13]</th>
+                    <th>Status [cite: 13]</th>
+                    <th>Institution [cite: 13]</th>
                 </tr>
             </thead>
             <tbody>
                 {% for course in classes %}
                 <tr>
-                    <td>{{ course.number }}</td>
-                    <td>{{ course.name }}</td>
-                    <td>{{ course.term }}</td>
-                    <td>{{ course.credits }}</td>
-                    <td>{{ course.status }}</td>
-                    <td>{{ course.university }}</td>
+                    <td>{{ course.number }} [cite: 13]</td>
+                    <td>{{ course.name }} [cite: 13]</td>
+                    <td>{{ course.term }} [cite: 13]</td>
+                    <td>{{ course.credits }} [cite: 13]</td>
+                    <td>{{ course.status }} [cite: 13]</td>
+                    <td>{{ course.university }} [cite: 13]</td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
 
-        <div style="margin-top: 20px; font-size: 8pt; text-align: center; color: #555;">
-            Generated from Official Portfolio (hunterhq.me) on <span id="current-date"></span>
+        <div class="print-footer">
+            Generated from Official Portfolio (hunterhq.me) on <span id="current-date"></span> [cite: 19]
         </div>
     </div>
 {% endblock %}
 
 {% block scripts %}
 <script>
-// Set the date for the transcript
-document.getElementById('current-date').innerText = new Date().toLocaleDateString();
+    // Automatically set today's date
+    document.getElementById('current-date').innerText = new Date().toLocaleDateString();
 
-function applyFilters() {
-    const subject = document.getElementById('filter-subject').value;
-    const term = document.getElementById('filter-term').value;
-    const level = document.getElementById('filter-level').value;
-    const uni = document.getElementById('filter-uni').value;
-    
-    const courses = document.querySelectorAll('.course-group');
-    let visibleCount = 0;
-
-    courses.forEach(card => {
-        const cSub = card.getAttribute('data-subject');
-        const cTerm = card.getAttribute('data-term');
-        const cLevel = card.getAttribute('data-level');
-        const cUni = card.getAttribute('data-uni');
-
-        const subMatch = (subject === 'all') || 
-                         (subject.includes(cSub)) || 
-                         (subject === 'HIS/POL/WRC' && ['HIS', 'POL', 'WRC'].includes(cSub));
+    /**
+     * Changes the window title temporarily to force a clean PDF filename
+     */
+    function prepareAndPrint() {
+        const originalTitle = document.title;
+        // This becomes the default file name: Hunter_Bradshaw_CV_Transcript.pdf
+        document.title = "Hunter_Bradshaw_CV_Transcript"; 
         
-        const termMatch = (term === 'all' || cTerm === term);
-        const levelMatch = (level === 'all' || cLevel === level);
-        const uniMatch = (uni === 'all' || cUni.includes(uni));
+        window.print();
+        
+        // Revert title after the print dialog closes
+        setTimeout(() => { document.title = originalTitle; }, 500);
+    }
 
-        if (subMatch && termMatch && levelMatch && uniMatch) {
-            card.classList.remove('hidden-course');
-            visibleCount++;
-        } else {
-            card.classList.add('hidden-course');
-        }
-    });
+    /**
+     * Multi-selector filter logic
+     */
+    function applyFilters() {
+        const subject = document.getElementById('filter-subject').value;
+        const term = document.getElementById('filter-term').value;
+        const level = document.getElementById('filter-level').value;
+        const uni = document.getElementById('filter-uni').value;
+        
+        const courses = document.querySelectorAll('.course-group');
+        let visibleCount = 0;
 
-    document.getElementById('active-count').innerText = visibleCount;
-}
+        courses.forEach(card => {
+            const cSub = card.getAttribute('data-subject');
+            const cTerm = card.getAttribute('data-term');
+            const cLevel = card.getAttribute('data-level');
+            const cUni = card.getAttribute('data-uni');
+
+            const subMatch = (subject === 'all') || 
+                             (subject.includes(cSub)) || 
+                             (subject === 'HIS/POL/WRC' && ['HIS', 'POL', 'WRC'].includes(cSub));
+            
+            const termMatch = (term === 'all' || cTerm === term);
+            const levelMatch = (level === 'all' || cLevel === level);
+            const uniMatch = (uni === 'all' || cUni.includes(uni));
+
+            if (subMatch && termMatch && levelMatch && uniMatch) {
+                card.classList.remove('hidden-course');
+                visibleCount++;
+            } else {
+                card.classList.add('hidden-course');
+            }
+        });
+
+        document.getElementById('active-count').innerText = visibleCount;
+    }
 </script>
 {% endblock %}
