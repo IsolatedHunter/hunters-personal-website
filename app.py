@@ -35,18 +35,14 @@ def project_detail(project_id):
 
 @app.route('/academics')
 def academics():
-    # Load from academics.json
-    # If academics.json is just a list [{}, {}], 'data' will be that list
-    data = load_json_data('academics.json')
-    
-    # Logic check: if your JSON is a list, pass it directly. 
-    # If it's a dict like {"classes": []}, use data.get("classes")
-    if isinstance(data, list):
-        course_list = data
-    else:
-        course_list = data.get("classes", [])
-        
-    return render_template('academics.html', classes=course_list, title="Academics")
+    try:
+        data = load_json_data('academics.json')
+        # Ensure we are passing a list to the template
+        course_list = data if isinstance(data, list) else data.get("classes", [])
+        return render_template('academics.html', classes=course_list, title="Academics")
+    except Exception as e:
+        print(f"Error loading academics: {e}")
+        abort(500)
 
 @app.route('/linktree')
 def linktree():
