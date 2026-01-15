@@ -20,17 +20,21 @@ def home():
 
 @app.route('/master-dossier')
 def master_dossier():
-    # The 'password' is checked in the URL: /master-dossier?code=utsa2026
     if request.args.get('code') != 'utsa2026':
         abort(404)
+
     portfolio_data = load_json_data('portfolio_data.json')['entries']
     academics_data = load_json_data('academics.json')
-    # If academics is a list, use it; otherwise get "classes"
+    
+    # Handle both list and dict structures for academics
     classes = academics_data if isinstance(academics_data, list) else academics_data.get("classes", [])
+
+    expertise = ["Mathematical Physics", "Numerical Integration", "Python (NumPy/Matplotlib)", "Community Leadership", "Data Visualization"]
 
     return render_template('master_dossier.html', 
                            entries=portfolio_data, 
-                           classes=classes)
+                           classes=classes,
+                           expertise=expertise)
 
 @app.route('/portfolio')
 def portfolio():

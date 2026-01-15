@@ -6,76 +6,111 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Libre+Baskerville:italic&display=swap');
+
         @media print {
-            body { background: white; color: black; }
+            body { background: white !important; padding: 0 !important; font-size: 11pt; }
             .no-print { display: none !important; }
             .page-break { page-break-before: always; }
-            .card { border: 1px solid #eee !important; box-shadow: none !important; }
-            a { text-decoration: none; color: black; }
-            a:after { content: " (" attr(href) ")"; font-size: 0.8rem; } /* Shows URLs on paper */
+            .master-container { box-shadow: none !important; border: none !important; width: 100% !important; max-width: none !important; padding: 0.5in !important; }
+            .class-row { break-inside: avoid; }
+            h2 { border-bottom: 2px solid black !important; margin-top: 2rem !important; }
         }
-        
-        body { font-family: 'Inter', sans-serif; background-color: #f8fafc; }
-        .master-container { max-width: 8.5in; margin: 0 auto; background: white; padding: 40px; }
+
+        body { font-family: 'Inter', sans-serif; color: #111; line-height: 1.5; }
+        .master-container { max-width: 8.5in; margin: 0 auto; background: white; padding: 50px; }
+        .prose-block h4 { font-weight: 800; text-transform: uppercase; margin-top: 1rem; color: #1e40af; font-size: 0.75rem; letter-spacing: 0.05em; }
+        .prose-block blockquote { font-family: 'Libre+Baskerville', serif; font-style: italic; border-left: 4px solid #e2e8f0; padding-left: 1.5rem; margin: 1.5rem 0; color: #334155; }
+        .prose-block p { margin-bottom: 0.75rem; text-align: justify; }
     </style>
 </head>
-<body class="p-8">
+<body class="bg-gray-100 p-8">
 
-    <div class="no-print mb-8 text-center">
-        <div class="bg-blue-600 text-white p-4 rounded-xl inline-block">
-            <p class="font-bold mb-2">Master Dossier Mode Active</p>
-            <button onclick="window.print()" class="bg-white text-blue-600 px-4 py-2 rounded-lg font-bold hover:bg-gray-100 transition">
-                <i class="fas fa-print mr-2"></i> Print to PDF
-            </button>
-        </div>
+    <div class="no-print mb-6 flex justify-center gap-4">
+        <button onclick="window.print()" class="bg-blue-600 text-white px-8 py-3 rounded-full font-bold shadow-lg hover:bg-blue-700 transition">
+            <i class="fas fa-print mr-2"></i> Print Master Dossier
+        </button>
+        <a href="{{ url_for('static', filename='Hunter_Bradshaws_Resume.pdf') }}" target="_blank" class="bg-gray-800 text-white px-8 py-3 rounded-full font-bold shadow-lg hover:bg-black transition">
+            <i class="fas fa-file-pdf mr-2"></i> View Standard Resume
+        </a>
     </div>
 
-    <div class="master-container shadow-2xl border border-gray-100">
-        <header class="border-b-4 border-black pb-6 mb-8 flex justify-between items-end">
+    <div class="master-container shadow-2xl border border-gray-200">
+        
+        <header class="flex justify-between items-start border-b-4 border-black pb-6 mb-8">
             <div>
-                <h1 class="text-5xl font-black uppercase tracking-tighter">Hunter Bradshaw</h1>
-                <p class="text-xl text-blue-600 font-bold">Physics & Mathematics | UTSA 2026</p>
+                <h1 class="text-5xl font-black uppercase tracking-tighter leading-none mb-1">Hunter Bradshaw</h1>
+                <p class="text-xl font-bold text-blue-700">Physics & Mathematics | UTSA Undergraduate</p>
+                <div class="mt-4 flex gap-6 text-xs font-bold uppercase tracking-widest text-gray-500">
+                    <span><i class="fas fa-envelope text-blue-600"></i> hunter.bradshaw@my.utsa.edu</span>
+                    <span><i class="fab fa-linkedin text-blue-600"></i> hunter-bradshaw</span>
+                </div>
             </div>
-            <div class="text-right text-sm">
-                <p>hunter.bradshaw@my.utsa.edu</p>
-                <p>linkedin.com/in/hunter-bradshaw/</p>
+            <div class="text-right no-print">
+                <div class="w-20 h-20 bg-gray-100 border-2 border-gray-200 rounded flex items-center justify-center text-[10px] text-gray-400 text-center p-2">
+                    Digital Portfolio Access
+                </div>
             </div>
         </header>
 
-        <section class="mb-12">
-            <h2 class="text-2xl font-black uppercase border-b-2 border-gray-200 mb-4">Academic Record</h2>
-            <div class="grid grid-cols-2 gap-4">
+        <section class="mb-10">
+            <h2 class="text-lg font-black uppercase tracking-widest border-b-2 border-black mb-4 flex justify-between">
+                Detailed Academic Record
+                <span class="text-sm font-normal normal-case text-gray-500">University of Texas at San Antonio</span>
+            </h2>
+            <div class="space-y-4">
                 {% for course in classes %}
-                <div class="flex justify-between border-b border-gray-50 py-1">
-                    <span class="font-bold">{{ course.name }}</span>
-                    <span class="text-gray-500">{{ course.grade }}</span>
+                <div class="class-row border-b border-gray-100 pb-3">
+                    <div class="flex justify-between font-bold text-sm">
+                        <span>{{ course.number }}: {{ course.name }}</span>
+                        <span class="text-blue-700">{{ course.status }} ({{ course.term }})</span>
+                    </div>
+                    <p class="text-xs text-gray-600 mt-1 leading-relaxed">
+                        <strong class="text-gray-900 uppercase text-[9px]">Competencies:</strong> {{ course.learned }}
+                    </p>
                 </div>
                 {% endfor %}
             </div>
         </section>
 
         <section class="page-break">
-            <h2 class="text-2xl font-black uppercase border-b-2 border-gray-200 mb-6">Portfolio & Experience</h2>
-            <div class="space-y-8">
+            <h2 class="text-lg font-black uppercase tracking-widest border-b-2 border-black mb-6">Comprehensive Project & Experience Narratives</h2>
+            
+            <div class="space-y-10">
                 {% for entry in entries %}
-                <div class="card p-6 border border-gray-100 rounded-xl">
-                    <div class="flex justify-between items-start mb-2">
-                        <h3 class="text-xl font-bold">{{ entry.title }}</h3>
-                        <span class="text-sm font-black text-blue-600">{{ entry.term }}</span>
+                <div class="class-row border-l-2 border-gray-200 pl-6 pb-4">
+                    <div class="flex justify-between items-baseline mb-1">
+                        <h3 class="text-xl font-extrabold text-gray-900 uppercase tracking-tight">{{ entry.title }}</h3>
+                        <span class="text-xs font-bold font-mono">{{ entry.term }}</span>
                     </div>
-                    <p class="text-gray-500 text-xs font-bold uppercase mb-3">{{ entry.institution }} • {{ entry.tag }}</p>
-                    <p class="text-sm leading-relaxed mb-4">{{ entry.description }}</p>
                     
-                    <div class="bg-gray-50 p-4 rounded-lg text-xs italic text-gray-600">
-                        {{ entry.content | striptags | truncate(300) }}...
+                    <div class="flex gap-3 text-[10px] font-black uppercase tracking-tighter text-blue-600 mb-4">
+                        <span class="bg-blue-50 px-2 py-0.5 rounded">{{ entry.institution }}</span>
+                        <span class="bg-gray-100 text-gray-600 px-2 py-0.5 rounded">{{ entry.tag }}</span>
+                        <span class="bg-gray-100 text-gray-600 px-2 py-0.5 rounded">{{ entry.type }}</span>
+                    </div>
+
+                    <div class="prose-block text-sm">
+                        {{ entry.content | safe }}
                     </div>
                 </div>
                 {% endfor %}
             </div>
         </section>
 
-        <footer class="mt-12 pt-8 border-t border-gray-200 text-center text-xs text-gray-400">
-            Generated via Hunter Bradshaw Portfolio CMS. Visit hunterbradshaw.com/portfolio for full digital stories.
+        <section class="page-break mt-10 p-6 bg-gray-50 rounded-xl border border-gray-200 text-center">
+            <h2 class="text-sm font-black uppercase mb-4 text-gray-400">Formal Documentation</h2>
+            <p class="text-sm text-gray-600 mb-4">A condensed, single-page professional resume is available as a companion to this dossier.</p>
+            <div class="flex justify-center items-center gap-2 text-blue-600 font-bold">
+                <i class="fas fa-file-pdf"></i>
+                <span>Hunter_Bradshaws_Resume.pdf</span>
+            </div>
+        </section>
+
+        <footer class="mt-12 pt-6 border-t border-gray-100 flex justify-between items-center text-[9px] text-gray-400 font-bold uppercase tracking-[0.2em]">
+            <span>Generated: 2026-01-14</span>
+            <span>Hunter Bradshaw | Master Dossier Protocol</span>
+            <span>Page End</span>
         </footer>
     </div>
 
