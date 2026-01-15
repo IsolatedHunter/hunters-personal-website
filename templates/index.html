@@ -3,67 +3,20 @@
 {% block title %}Hunter Bradshaw | Home{% endblock %}
 
 {% block head %}
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <style>
         html { scroll-behavior: smooth; }
         
-        .pt-24 {
-            padding-top: 4rem !important;
-        }
-        .mb-12 {
-            margin-bottom: 0rem !important;
-        }
-        .pb-32 {
-            padding-bottom: 4rem !important;
-        }
+        .pt-32 { padding-top: 8rem !important; }
+        .pb-20 { padding-bottom: 5rem !important; }
 
-        /* FIX: Container management to prevent clipping */
-        #experience {
-            overflow: hidden; 
-        }
-        .experienceSwiper {
-            /* Top padding allows cards to lift up; Bottom padding ensures dots have space */
-            padding: 60px 15px 80px 15px !important; 
-            margin-top: -30px; 
-        }
-
-        /* Custom Swiper Navigation */
-        .swiper-button-next, .swiper-button-prev {
-            background-color: white;
-            width: 45px !important;
-            height: 45px !important;
-            border-radius: 50%;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-            color: #2563eb !important;
-            top: 45% !important; 
-        }
-
-        .swiper-button-next:after, .swiper-button-prev:after {
-            font-size: 18px !important;
-            font-weight: bold;
-        }
-
-        /* Fix Pagination Bullets */
-        .swiper-pagination {
-            bottom: 30px !important; 
-        }
-
-        .swiper-pagination-bullet-active {
-            background: #2563eb !important;
-            width: 20px;
-            border-radius: 4px;
-        }
-        
-        /* Card Hover Effects */
-        .experience-card {
+        /* Card Hover Effects for Achievements */
+        .achievement-card {
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            background: white; 
         }
 
-        .experience-card:hover {
-            transform: translateY(-20px); 
-            border-color: #2563eb;
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        .achievement-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
         }
     </style>
 {% endblock %}
@@ -71,7 +24,7 @@
 {% block content %}
     <header id="about" class="pt-32 pb-20 px-6">
         <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
-            <div class="w-56 h-56 md:w-72 md:h-72 rounded-3xl overflow-hidden shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-500 border-4 border-white">
+            <div class="w-56 h-56 md:w-72 md:h-72 rounded-3xl overflow-hidden shadow-2xl rotate-2 hover:rotate-0 transition-transform duration-500 border-4 border-white shrink-0">
                 <img src="{{ url_for('static', filename='Hunter_Bradshaws_Photo.JPG') }}" 
                     alt="Hunter Bradshaw" 
                     class="w-full h-full object-cover bg-gray-200" 
@@ -85,179 +38,87 @@
                     Currently pursuing <span class="text-blue-600 font-semibold">Mathematics and Physics</span> at the University of Texas at San Antonio. I am driven by the intersection of rigorous science and community leadership, focusing on empowering others through education and service.
                 </p>
                 <div class="flex flex-wrap justify-center md:justify-start gap-4">
+                    <a href="{{ url_for('projects') }}" class="bg-blue-600 text-white px-8 py-3 rounded-xl font-bold hover:bg-blue-700 transition transform hover:scale-105 shadow-lg">
+                        View Portfolio
+                    </a>
                     <a href="https://www.linkedin.com/in/hunter-bradshaw/" target="_blank" class="bg-gray-900 text-white px-6 py-3 rounded-xl font-semibold hover:bg-black transition flex items-center gap-2">
                         <i class="fab fa-linkedin"></i> LinkedIn
-                    </a>
-                    <a href="{{ url_for('static', filename='Hunter_Bradshaws_Resume.pdf') }}" target="_blank" download class="border-2 border-gray-300 text-gray-700 px-6 py-3 rounded-xl font-semibold hover:border-blue-600 hover:text-blue-600 transition flex items-center gap-2">
-                        <i class="fas fa-file-download"></i> My Resume
                     </a>
                 </div>
             </div>
         </div>
     </header>
 
-    <section id="experience" class="py-24 bg-white">
-        <div class="max-w-6xl mx-auto px-6 relative">
-            <div class="mb-12">
-                <h2 class="text-3xl font-bold text-gray-900 mb-2">Professional Experience</h2>
-                <div class="w-12 h-1 bg-blue-600 rounded"></div>
+    <section id="achievements" class="py-24 bg-gray-50 border-y border-gray-100">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-black text-gray-900 uppercase tracking-tight mb-4">Honors & Recognition</h2>
+                <div class="w-16 h-1 bg-blue-600 rounded mx-auto"></div>
             </div>
             
-            <div class="swiper experienceSwiper !pb-14">
-                <div class="swiper-wrapper">
-                    <div class="swiper-slide">
-                        <div class="experience-card bg-gray-50 p-8 rounded-2xl border border-gray-100 h-full flex flex-col shadow-sm">
-                            <div class="flex justify-between items-start mb-6">
-                                <div class="w-12 h-12 bg-fuchsia-600 rounded-lg flex items-center justify-center text-white shadow-lg">
-                                    <i class="fas fa-hands-bound text-xl"></i>
-                                </div>
-                                <span class="text-xs font-bold text-fuchsia-600 uppercase tracking-widest">Founding President</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-900">Interact Club @ Comfort HS</h3>
-                            <p class="text-sm text-gray-500 mb-4">Rotary International Affiliate</p>
-                            <p class="text-gray-600 text-sm leading-relaxed flex-grow">
-                                Founded the inaugural club at Comfort High School. Recruited 30+ members and established sustainable community service projects.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <div class="experience-card bg-gray-50 p-8 rounded-2xl border border-gray-100 h-full flex flex-col shadow-sm">
-                            <div class="flex justify-between items-start mb-6">
-                                <div class="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center text-white shadow-lg">
-                                    <i class="fas fa-hand-holding-heart text-xl"></i>
-                                </div>
-                                <span class="text-xs font-bold text-orange-600 uppercase tracking-widest">Active Member</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-900">VOICES @ UTSA</h3>
-                            <p class="text-sm text-gray-500 mb-4">Volunteer Organization</p>
-                            <p class="text-gray-600 text-sm leading-relaxed flex-grow">
-                                Dedicated member contributing to diverse service initiatives across San Antonio.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="swiper-slide">
-                        <div class="experience-card bg-gray-50 p-8 rounded-2xl border border-gray-100 h-full flex flex-col shadow-sm">
-                            <div class="flex justify-between items-start mb-6">
-                                <div class="w-12 h-12 bg-indigo-600 rounded-lg flex items-center justify-center text-white shadow-lg">
-                                    <i class="fas fa-atom text-xl"></i>
-                                </div>
-                                <span class="text-xs font-bold text-indigo-600 uppercase tracking-widest">Leadership Experience</span>
-                            </div>
-                            <h3 class="text-xl font-bold text-gray-900">LeaderShape</h3>
-                            <p class="text-sm text-gray-500 mb-4">UTSA Leadership & Service • 2025</p>
-                            <p class="text-gray-600 text-sm leading-relaxed flex-grow">
-                                Completed the intensive LeaderShape Institute, a transformative leadership development program.
-                            </p>
-                        </div>
-                    </div>
-                    
-                    <div class="swiper-slide">
-                      <div class="experience-card bg-gray-50 p-8 rounded-2xl border border-gray-100 h-full flex flex-col shadow-sm">
-                          <div class="flex justify-between items-start mb-6">
-                              <div class="w-12 h-12 bg-yellow-600 rounded-lg flex items-center justify-center text-white shadow-lg">
-                                  <i class="fas fa-chalkboard-teacher text-xl"></i>
-                              </div>
-                              <span class="text-xs font-bold text-yellow-600 uppercase tracking-widest">Education & Mentorship</span>
-                          </div>
-                          <h3 class="text-xl font-bold text-gray-900">Student Aide</h3>
-                          <p class="text-sm text-gray-500 mb-4">Comfort Middle School • 2024-2025</p>
-                          <p class="text-gray-600 text-sm leading-relaxed flex-grow">
-                              Supported science instruction and mentored students weekly.
-                          </p>
-                      </div>
-                    </div>
-                </div>
-
-                <div class="swiper-button-next !-right-2 md:!right-0"></div>
-                <div class="swiper-button-prev !-left-2 md:!left-0"></div>
-                <div class="swiper-pagination"></div>
-            </div>
-        </div>
-    </section>
-
-    <section id="achievements" class="py-24 bg-gray-50">
-        <div class="max-w-6xl mx-auto px-6">
-            <h2 class="text-3xl font-bold mb-12 text-center text-gray-900">Honors & Recognition</h2>
             <div class="grid md:grid-cols-2 gap-8">
-                <div class="p-8 bg-white rounded-2xl shadow-sm border-l-4 border-yellow-400">
+                <div class="achievement-card p-8 bg-white rounded-3xl shadow-sm border border-gray-100 border-l-8 border-l-yellow-400">
                     <div class="flex items-center gap-4 mb-4">
-                        <i class="fas fa-trophy text-3xl text-yellow-500"></i>
+                        <div class="w-12 h-12 bg-yellow-50 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-trophy text-2xl text-yellow-500"></i>
+                        </div>
                         <div>
-                            <h3 class="text-xl font-bold text-gray-900 text-balance">Service Above Self Scholarship</h3>
-                            <p class="text-sm text-gray-500 italic">Rotary Club of Kerrville • 2025</p>
+                            <h3 class="text-xl font-bold text-gray-900">Service Above Self Scholarship</h3>
+                            <p class="text-xs text-gray-500 font-bold uppercase tracking-widest">Rotary Club of Kerrville • 2025</p>
                         </div>
                     </div>
-                    <p class="text-gray-600 text-sm leading-relaxed">
-                        Awarded $5,000 for exceptional community leadership and academic merit.
+                    <p class="text-gray-600 leading-relaxed">
+                        Awarded $5,000 for exceptional community leadership, academic merit, and a demonstrated commitment to the Rotary ideal of "Service Above Self."
                     </p>
                 </div>
-                <div class="p-8 bg-white rounded-2xl shadow-sm border-l-4 border-blue-500">
+
+                <div class="achievement-card p-8 bg-white rounded-3xl shadow-sm border border-gray-100 border-l-8 border-l-blue-500">
                     <div class="flex items-center gap-4 mb-4">
-                        <i class="fas fa-award text-3xl text-blue-500"></i>
+                        <div class="w-12 h-12 bg-blue-50 rounded-xl flex items-center justify-center">
+                            <i class="fas fa-award text-2xl text-blue-500"></i>
+                        </div>
                         <div>
                             <h3 class="text-xl font-bold text-gray-900">Most Spirited Award</h3>
-                            <p class="text-sm text-gray-500 italic">VOICES @ UTSA • 2025</p>
+                            <p class="text-xs text-gray-500 font-bold uppercase tracking-widest">VOICES @ UTSA • 2025</p>
                         </div>
                     </div>
-                    <p class="text-gray-600 text-sm leading-relaxed">
-                        Recognized for outstanding enthusiasm within the UTSA community.
+                    <p class="text-gray-600 leading-relaxed">
+                        Recognized for outstanding enthusiasm and active engagement within the University of Texas at San Antonio's premier volunteer organization.
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="py-20 bg-white">
+    <section class="py-24 bg-white">
         <div class="max-w-6xl mx-auto px-6 text-center">
-            <h2 class="text-2xl font-bold mb-10 text-gray-400 uppercase tracking-widest">Interests & Expertise</h2>
-            <div class="flex flex-wrap justify-center gap-3">
-                <span class="px-5 py-2 bg-blue-50 text-blue-700 rounded-full font-medium border border-blue-100">Mathematical Physics</span>
-                <span class="px-5 py-2 bg-blue-50 text-blue-700 rounded-full font-medium border border-blue-100">Community Leadership</span>
-                <span class="px-5 py-2 bg-blue-50 text-blue-700 rounded-full font-medium border border-blue-100">Education Reform</span>
-                <span class="px-5 py-2 bg-blue-50 text-blue-700 rounded-full font-medium border border-blue-100">Data Analysis</span>
-                <span class="px-5 py-2 bg-blue-50 text-blue-700 rounded-full font-medium border border-blue-100">Outdoor Exploration</span>
+            <h2 class="text-xs font-black mb-10 text-gray-400 uppercase tracking-[0.4em]">Interests & Expertise</h2>
+            <div class="flex flex-wrap justify-center gap-4">
+                <span class="px-6 py-3 bg-gray-50 text-gray-700 rounded-2xl font-bold border border-gray-100 hover:border-blue-200 hover:text-blue-600 transition cursor-default">Mathematical Physics</span>
+                <span class="px-6 py-3 bg-gray-50 text-gray-700 rounded-2xl font-bold border border-gray-100 hover:border-blue-200 hover:text-blue-600 transition cursor-default">Community Leadership</span>
+                <span class="px-6 py-3 bg-gray-50 text-gray-700 rounded-2xl font-bold border border-gray-100 hover:border-blue-200 hover:text-blue-600 transition cursor-default">Education Reform</span>
+                <span class="px-6 py-3 bg-gray-50 text-gray-700 rounded-2xl font-bold border border-gray-100 hover:border-blue-200 hover:text-blue-600 transition cursor-default">Data Analysis</span>
+                <span class="px-6 py-3 bg-gray-50 text-gray-700 rounded-2xl font-bold border border-gray-100 hover:border-blue-200 hover:text-blue-600 transition cursor-default">Outdoor Exploration</span>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="pt-24 pb-32 bg-gray-900 text-white">
+    <section id="contact" class="pt-24 pb-32 bg-gray-900 text-white rounded-t-[3rem] -mt-8">
         <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-4xl font-bold mb-6">Let's Build Something Together</h2>
-            <p class="text-gray-400 mb-10 text-lg">Whether you're interested in research collaboration or community projects, I'm always open to connecting.</p>
+            <h2 class="text-4xl md:text-5xl font-black mb-6">Let's Build Something Together</h2>
+            <p class="text-gray-400 mb-12 text-lg">Whether you're interested in research collaboration, community projects, or professional opportunities, I'm always open to connecting.</p>
             
-            <a href="mailto:hunter.bradshaw@my.utsa.edu" class="inline-block bg-blue-600 hover:bg-blue-700 text-white text-xl font-bold py-5 px-12 rounded-2xl transition transform hover:scale-105 shadow-xl mb-12">
-                <i class="far fa-envelope mr-2"></i> Send an Email
-            </a>
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <a href="mailto:hunter.bradshaw@my.utsa.edu" class="bg-blue-600 hover:bg-blue-700 text-white text-xl font-bold py-5 px-12 rounded-2xl transition transform hover:scale-105 shadow-xl">
+                    <i class="far fa-envelope mr-2"></i> Send an Email
+                </a>
+                <a href="{{ url_for('static', filename='Hunter_Bradshaws_Resume.pdf') }}" class="bg-transparent border-2 border-gray-700 hover:border-white text-white text-xl font-bold py-5 px-12 rounded-2xl transition">
+                    Download Resume
+                </a>
+            </div>
         </div>
     </section>
 {% endblock %}
 
 {% block scripts %}
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script>
-        const swiper = new Swiper('.experienceSwiper', {
-            slidesPerView: 1,
-            spaceBetween: 30,
-            loop: true,
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
-            },
-            grabCursor: true,
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev',
-            },
-            breakpoints: {
-                768: { slidesPerView: 2 },
-                1024: { slidesPerView: 3 }
-            }
-        });
-    </script>
-{% endblock %}
+    {% endblock %}

@@ -18,19 +18,19 @@ def load_json_data(filename):
 def home():
     return render_template('index.html', title="Home")
 
-@app.route('/projects')
-def projects():
+@app.route('/portfolio')
+def portfolio():
     # Load your new JSON structure
-    data = load_json_data('projects.json')
+    data = load_json_data('portfolio_data.json')
     # Pass the list of entries
-    return render_template('projects.html', entries=data['entries'])
+    return render_template('portfolio.html', entries=data['entries'])
 
-@app.route('/projects/<int:entry_id>')
-def project_detail(entry_id):
-    data = load_json_data('projects.json')
+@app.route('/portfolio/<int:entry_id>')
+def portfolio_detail(entry_id):
+    data = load_json_data('portfolio_data.json')
     # Access by list index
     entry = data['entries'][entry_id]
-    return render_template('project_detail.html', project=entry)
+    return render_template('portfolio_detail.html', project=entry)
 
 @app.route('/academics')
 def academics():

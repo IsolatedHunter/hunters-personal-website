@@ -14,7 +14,7 @@
             "icon": "fas fa-code"
         },
         {
-            "type": "project",
+            "type": "experience",
             "title": "RYLA Leadership Camp Participation",
             "category": "leadership",
             "tag": "Youth Leadership",
@@ -64,6 +64,45 @@
             "content": "<blockquote><strong>I ain't reading all that:</strong> I’m learning the business side of PR—how to handle media, write press releases, and manage a brand's reputation. I want to be able to explain science to the public without it being boring. It helps me be a professional 'voice' for science.</blockquote><h4>Engineering the Narrative</h4><p>In an era of complex global challenges, the ability to communicate clearly and ethically is critical. The <strong>Microsoft PR and Communications Associate</strong> certificate is about the strategic side of messaging. It moves into the realm of <strong>Integrated Communications</strong>, where every message is part of a purposeful narrative.</p><h4>Frameworks and Crisis Management</h4><p>The curriculum covers <strong>Media Relations</strong> and <strong>Crisis Communication</strong>. In Crisis Comm, you learn how to respond when a project fails or a company makes a mistake.  You learn the importance of transparency, speed, and accountability—frameworks used by the world's largest organizations to maintain public trust.</p><h4>Data-Driven Communication</h4><p>I am learning how to use analytics to track the 'sentiment' of a campaign. It’s not just about sending a tweet; it’s about understanding who it reached and how it changed their perception. This 'data-driven' approach appeals to the mathematician in me, as it allows for the measurement of something as abstract as reputation.</p><h4>A Voice for Science</h4><p>This is the 'missing link' in my education. Many scientists are brilliant but can't explain their work to the public or a politician. I feel a responsibility to be different. This course prepares me to advocate for research funding and explain breakthroughs to the general public. Every case study I analyze makes my world-view expand, teaching me to be not just a scientist, but an advocate for science.</p>",
             "gradient": "from-indigo-400 to-purple-600",
             "icon": "fas fa-bullhorn"
+        },
+        {
+            "type": "experience",
+            "title": "Interact Club @ Comfort HS",
+            "category": "leadership",
+            "tag": "Founding President",
+            "status": "Completed",
+            "institution": "Rotary International",
+            "term": "2023 - 2025",
+            "description": "Founded the inaugural club at Comfort High School. Recruited 30+ members and established sustainable community service projects.",
+            "content": "<blockquote><strong>I ain't reading all that:</strong> I started a Rotary-affiliated club from scratch in high school. I grew it to 30 people and led a bunch of community service events. It taught me how to build an organization from zero.</blockquote><h4>The Founding Vision</h4><p>Starting a new organization requires more than just an idea; it requires a blueprint for sustainability. As the Founding President, I had to navigate school board approvals, recruit a diverse member base, and establish a partnership with the local Rotary Club of Kerrville.</p><h4>Leadership in Action</h4><p>I managed a team of officers to coordinate weekly meetings and service events. We focused on local impact, ranging from park cleanups to fundraising for international polio eradication. This experience was my first real test in organizational management and public speaking.</p>",
+            "gradient": "from-fuchsia-500 to-purple-600",
+            "icon": "fas fa-hands-bound"
+        },
+        {
+            "type": "experience",
+            "title": "VOICES @ UTSA",
+            "category": "leadership",
+            "tag": "Active Member",
+            "status": "In Progress",
+            "institution": "UTSA",
+            "term": "2025 - Present",
+            "description": "Dedicated member contributing to diverse service initiatives across San Antonio, focusing on community outreach.",
+            "content": "<blockquote><strong>I ain't reading all that:</strong> I'm an active volunteer at UTSA. I help out with different service projects around San Antonio. It keeps me connected to the community outside of just doing homework.</blockquote><h4>Community Integration</h4><p>Being part of VOICES (Volunteer Organization Involving Community, Education and Service) allows me to apply my leadership skills in a college environment. I participate in varied projects, from food bank sorting to environmental restoration.</p>",
+            "gradient": "from-orange-400 to-red-500",
+            "icon": "fas fa-hand-holding-heart"
+        },
+        {
+            "type": "experience",
+            "title": "LeaderShape Institute",
+            "category": "leadership",
+            "tag": "Graduate",
+            "status": "Completed",
+            "institution": "UTSA Leadership & Service",
+            "term": "Summer 2025",
+            "description": "Completed an intensive leadership development program focused on ethical leadership and creating a vision for the future.",
+            "content": "<blockquote><strong>I ain't reading all that:</strong> I did a week-long leadership bootcamp. It was intense and forced me to think about what kind of impact I want to have on the world. I came out of it with a much clearer plan for my career.</blockquote><h4>A Vision for Change</h4><p>The LeaderShape Institute is a transformative six-day experience. We focused on the concept of 'Living in Possibility.' I developed a personal vision statement centered on making scientific education accessible to rural communities.</p>",
+            "gradient": "from-indigo-500 to-blue-600",
+            "icon": "fas fa-atom"
         }
     ]
 }
