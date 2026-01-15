@@ -1,6 +1,15 @@
-from flask import Flask, render_template, url_for
+import json
+from flask import Flask, render_template, url_for, abort
 
 app = Flask(__name__)
+
+# Helper function to read your "laptop-managed" database
+def get_projects_data():
+    try:
+        with open('projects.json', 'r') as f:
+            return json.load(f)
+    except FileNotFoundError:
+        return {}
 
 @app.route('/')
 def home():
@@ -8,7 +17,20 @@ def home():
 
 @app.route('/projects', strict_slashes=False)
 def projects():
-    return render_template('projects.html')
+    # Pass the database content to the projects grid
+    data = get_projects_data()
+    return render_template('projects.html', projects=data)
+
+@app.route('/projects/<project_id>', strict_slashes=False)
+def project_detail(project_id):
+    # This route handles EVERY individual project page automatically
+    data = get_projects_data()
+    project = data.get(project_id)
+    
+    if not project:
+        abort(404) # Trigger the error handler if ID doesn't exist
+        
+    return render_template('project_detail.html', project=project)
 
 @app.route('/linktree', strict_slashes=False)
 def linktree():
