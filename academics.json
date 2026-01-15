@@ -272,7 +272,6 @@
         "level": "Lower-Division",
         "learned": "Introduces U.S. political institutions, elections, public opinion, and policy processes."
     },
-    [
     {
         "number": "AIS 1243",
         "name": "AIS: Engineering, Math, and Sciences",
@@ -315,6 +314,4 @@
         "level": "Lower-Division",
         "learned": "Focused on advanced algebraic techniques, systems of equations, functions, and mathematical modeling for STEM applications."
     }
-]
-
 ]
