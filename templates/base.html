@@ -12,7 +12,9 @@
 
     <nav class="fixed w-full bg-white/90 backdrop-blur-md z-50 shadow-sm">
         <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-            <span class="text-xl font-bold tracking-tighter text-blue-600">HunterHQ</span>
+            <a href="{{ url_for('home') }}" class="hover:opacity-80 transition-opacity">
+                <span class="text-xl font-bold tracking-tighter text-blue-600">HunterHQ</span>
+            </a>
             <div class="hidden md:flex space-x-8 text-sm font-medium">
                 <a href="{{ url_for('home') }}#about" class="hover:text-blue-600 transition">About</a>
                 <a href="{{ url_for('home') }}#experience" class="hover:text-blue-600 transition">Experience</a>
