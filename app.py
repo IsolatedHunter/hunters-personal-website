@@ -5,6 +5,9 @@ from flask import Flask, render_template, abort, request
 
 app = Flask(__name__)
 
+# Allow routes to be accessed with or without trailing slashes
+app.url_map.strict_slashes = False
+
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
 def load_json_data(filename):
@@ -64,8 +67,6 @@ def academics():
 @app.route('/linktree')
 def linktree():
     return render_template('linktree.html', title="Links")
-
-# --- Error Handlers ---
 
 # --- Error Handlers ---
 
