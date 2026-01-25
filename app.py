@@ -53,6 +53,10 @@ def portfolio_detail(entry_id):
     entry = data['entries'][entry_id]
     return render_template('portfolio_detail.html', project=entry)
 
+@app.route('/resume')
+def resume():
+    return render_template('resume.html')
+
 @app.route('/academics')
 def academics():
     try:
