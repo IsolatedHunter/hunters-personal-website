@@ -4,222 +4,207 @@
 
 {% block head %}
     <style>
-        /* Interactive Detail Toggles */
+        /* Accordion Styling */
         details summary::-webkit-details-marker { display:none; }
-        summary { list-style: none; cursor: pointer; outline: none; }
+        summary { list-style: none; cursor: pointer; }
         
-        .resume-card { 
-            transition: all 0.3s ease;
-            border-left: 4px solid transparent;
-        }
-        .resume-card:hover { 
-            border-left-color: #2563eb; 
-            background-color: #f8fafc;
-        }
-
-        .plus-icon { 
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1); 
-        }
-        details[open] .plus-icon { transform: rotate(45deg); }
+        details[open] summary .plus-icon { transform: rotate(45deg); }
+        .plus-icon { transition: transform 0.3s ease; }
         
-        /* Progress Bar for Skills */
-        .skill-bar { height: 8px; border-radius: 4px; background: #e2e8f0; overflow: hidden; }
-        .skill-progress { height: 100%; background: #2563eb; transition: width 1s ease-in-out; }
+        .resume-section { border-bottom: 1px solid #e5e7eb; padding-bottom: 2rem; margin-bottom: 2rem; }
+        .resume-section:last-child { border-bottom: none; }
     </style>
 {% endblock %}
 
 {% block content %}
-    <nav class="sticky top-0 z-40 bg-white/80 backdrop-blur-md border-b border-gray-100 py-4 hidden md:block">
-        <div class="max-w-5xl mx-auto px-6 flex justify-center gap-8 text-sm font-bold uppercase tracking-widest text-gray-500">
-            <a href="#summary" class="hover:text-blue-600 transition">Summary</a>
-            <a href="#education" class="hover:text-blue-600 transition">Education</a>
-            <a href="#experience" class="hover:text-blue-600 transition">Experience</a>
-            <a href="#projects" class="hover:text-blue-600 transition">Projects</a>
-            <a href="#skills" class="hover:text-blue-600 transition">Skills</a>
-        </div>
-    </nav>
-
-    <header class="pt-20 pb-12 px-6 bg-slate-50">
-        <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-start md:items-end gap-6">
+    <header class="pt-32 pb-16 bg-white px-6">
+        <div class="max-w-4xl mx-auto text-center md:text-left flex flex-col md:flex-row justify-between items-end gap-8">
             <div>
-                <h1 class="text-6xl font-black text-gray-900 mb-4 tracking-tight">Resume</h1>
-                <p class="text-xl text-gray-600 max-w-2xl">
-                    Physics and Mathematics student at <span class="text-blue-600 font-bold">UTSA</span>, combining rigorous analytical training with a foundation in community leadership and programming.
-                </p>
+                <h1 class="text-5xl font-black text-gray-900 mb-2">Hunter Bradshaw</h1>
+                <p class="text-xl text-blue-600 font-bold mb-4">Physics & Mathematics Student</p>
+                <div class="flex flex-wrap gap-4 text-gray-600 font-medium">
+                    <span><i class="fas fa-map-marker-alt mr-2 text-blue-500"></i>San Antonio, TX</span>
+                    <a href="mailto:hunter.bradshaw@my.utsa.edu" class="hover:text-blue-600 transition"><i class="fas fa-envelope mr-2 text-blue-500"></i>Email</a>
+                    <a href="https://www.linkedin.com/in/hunter-bradshaw/" target="_blank" class="hover:text-blue-600 transition"><i class="fab fa-linkedin mr-2 text-blue-500"></i>LinkedIn</a>
+                </div>
             </div>
-            <div class="flex flex-wrap gap-3">
-                <a href="{{ url_for('static', filename='Hunter_Bradshaws_Resume.pdf') }}" class="bg-gray-900 text-white px-6 py-3 rounded-xl font-bold hover:bg-black transition flex items-center gap-2">
-                    <i class="fas fa-file-pdf"></i> PDF Version
+            <div class="flex gap-3 w-full md:w-auto">
+                <a href="{{ url_for('static', filename='Hunter_Bradshaws_Resume.pdf') }}" class="flex-1 text-center bg-gray-900 text-white px-6 py-3 rounded-xl font-bold hover:bg-black transition shadow-lg">
+                    Download PDF
+                </a>
+                <a href="#contact" class="flex-1 text-center bg-blue-600 text-white px-6 py-3 rounded-xl font-bold hover:bg-blue-700 transition shadow-lg">
+                    Contact
                 </a>
             </div>
         </div>
     </header>
 
-    <main class="max-w-5xl mx-auto px-6 py-16 space-y-20">
-
-        <section id="summary" class="scroll-mt-32">
-            <h2 class="text-xs font-black text-blue-600 uppercase tracking-[0.4em] mb-8">Executive Summary</h2>
-            <div class="bg-white p-8 rounded-[2.5rem] border border-gray-100 shadow-sm">
-                <p class="text-2xl font-medium text-gray-800 leading-snug">
-                    I aim to synthesize <span class="bg-blue-50 px-2 text-blue-700">Mathematical Physics</span> with <span class="bg-blue-50 px-2 text-blue-700">Computational Tools</span> to solve high-impact problems. My background spans founding community organizations to mastering multi-variable calculus and classical mechanics.
+    <main class="pb-32 px-6">
+        <div class="max-w-4xl mx-auto bg-white p-8 md:p-12 rounded-[3rem] shadow-xl border border-gray-100">
+            
+            <section class="resume-section">
+                <h2 class="text-xs font-black text-blue-600 uppercase tracking-[0.3em] mb-4">Objective</h2>
+                <p class="text-lg text-gray-700 leading-relaxed">
+                    Driven Physics and Mathematics student at UTSA, committed to leveraging rigorous scientific inquiry and community leadership to solve complex problems and empower others through education.
                 </p>
-            </div>
-        </section>
-
-        <section id="education" class="scroll-mt-32">
-            <h2 class="text-xs font-black text-blue-600 uppercase tracking-[0.4em] mb-8">Education & Certifications</h2>
-            <div class="space-y-6">
-                <div class="resume-card p-8 bg-white rounded-3xl border border-gray-100 shadow-sm">
-                    <div class="flex justify-between items-start mb-4">
-                        <div>
-                            <h3 class="text-2xl font-black text-gray-900">University of Texas at San Antonio</h3>
-                            <p class="text-blue-600 font-bold">B.S. Physics & B.S. Mathematics • Double Major</p>
-                        </div>
-                        <span class="text-sm font-bold text-gray-400 bg-gray-50 px-3 py-1 rounded-full uppercase">2025 - Present</span>
+                <details class="mt-4 group">
+                    <summary class="inline-flex items-center text-sm font-bold text-gray-400 hover:text-blue-600 transition uppercase tracking-wider">
+                        <span class="plus-icon mr-2">+</span> My Mission & Goals
+                    </summary>
+                    <div class="mt-4 p-6 bg-slate-50 rounded-2xl text-gray-600 space-y-3">
+                        <p><strong>Personal Mission:</strong> To bridge the gap between academic research and community impact, ensuring that scientific advancement serves the public good.</p>
+                        <p><strong>Target Roles:</strong> Undergraduate Research Assistantships, Physics/Math Tutoring, and Leadership roles within STEM outreach.</p>
+                        <p><strong>Values:</strong> Service, Academic Integrity, and Mentorship.</p>
                     </div>
-                    <p class="text-gray-600 mb-6">Concentration in Scientific Computing and Mathematical Modeling.</p>
-                    
-                    <details class="group">
-                        <summary class="flex items-center gap-2 text-sm font-black text-gray-400 group-hover:text-blue-600 transition uppercase tracking-widest">
-                            <span class="plus-icon text-lg">+</span> Academic Deep Dive
+                </details>
+            </section>
+
+            <section class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+                <div class="p-4 bg-blue-50 rounded-2xl text-center">
+                    <div class="text-2xl font-black text-blue-600">100+</div>
+                    <div class="text-[10px] uppercase font-bold text-gray-500 tracking-tighter">Volunteer Hours</div>
+                </div>
+                <div class="p-4 bg-blue-50 rounded-2xl text-center">
+                    <div class="text-2xl font-black text-blue-600">2</div>
+                    <div class="text-[10px] uppercase font-bold text-gray-500 tracking-tighter">B.S. Degrees</div>
+                </div>
+                <div class="p-4 bg-blue-50 rounded-2xl text-center">
+                    <div class="text-2xl font-black text-blue-600">1st</div>
+                    <div class="text-[10px] uppercase font-bold text-gray-500 tracking-tighter">Place FCCLA State</div>
+                </div>
+                <div class="p-4 bg-blue-50 rounded-2xl text-center">
+                    <div class="text-2xl font-black text-blue-600">Founder</div>
+                    <div class="text-[10px] uppercase font-bold text-gray-500 tracking-tighter">Interact Club</div>
+                </div>
+            </section>
+
+            <section class="resume-section">
+                <h2 class="text-xs font-black text-blue-600 uppercase tracking-[0.3em] mb-6">Education</h2>
+                
+                <div class="mb-8">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900">University of Texas at San Antonio</h3>
+                            <p class="text-gray-600">B.S. in Physics & B.S. in Mathematics</p>
+                        </div>
+                        <span class="text-sm font-bold text-gray-400">Exp. May 2029</span>
+                    </div>
+                    <details class="mt-2 group">
+                        <summary class="inline-flex items-center text-sm font-bold text-gray-400 hover:text-blue-600 transition">
+                            <span class="plus-icon mr-2">+</span> Coursework & Academic Focus
                         </summary>
-                        <div class="mt-6 pt-6 border-t border-gray-50 grid md:grid-cols-2 gap-8">
+                        <div class="mt-4 grid md:grid-cols-2 gap-4 p-6 bg-slate-50 rounded-2xl">
                             <div>
-                                <h4 class="text-xs font-black text-gray-400 uppercase mb-3">Key Coursework</h4>
-                                <ul class="space-y-2 text-sm text-gray-700">
-                                    <li class="flex justify-between"><span>Calculus I & II (In Progress)</span> <span class="text-green-600 font-bold">A</span></li>
-                                    <li class="flex justify-between"><span>Physics for Scientists & Engineers I</span> <span class="text-blue-500 font-bold">Enrolled</span></li>
-                                    <li class="flex justify-between"><span>Computer Programming I</span> <span class="text-green-600 font-bold">Passed</span></li>
+                                <h4 class="font-bold text-gray-900 mb-2">Technical Skills</h4>
+                                <ul class="text-sm text-gray-600 list-disc ml-4 space-y-1">
+                                    <li>Mathematical Physics</li>
+                                    <li>Data Analysis</li>
+                                    <li>Analytical Problem Solving</li>
                                 </ul>
-                                <a href="{{ url_for('academics') }}" class="inline-block mt-4 text-xs font-bold text-blue-600 hover:underline">View Full Transcript &rarr;</a>
                             </div>
-                            <div class="bg-slate-50 p-4 rounded-2xl">
-                                <h4 class="text-xs font-black text-gray-400 uppercase mb-3">Institutional Impact</h4>
-                                <p class="text-sm text-gray-600 leading-relaxed">Member of VOICES @ UTSA and LeaderShape Institute Graduate (Summer 2025). Focusing on ethical leadership within STEM departments.</p>
+                            <div>
+                                <h4 class="font-bold text-gray-900 mb-2">Research Interests</h4>
+                                <p class="text-sm text-gray-600">Focused on the intersection of theoretical physics and computational modeling.</p>
                             </div>
                         </div>
                     </details>
                 </div>
 
+                <div>
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900">Comfort High School</h3>
+                            <p class="text-gray-600">Dual Credit & STEM Graduate</p>
+                        </div>
+                        <span class="text-sm font-bold text-gray-400">Class of 2025</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="resume-section">
+                <h2 class="text-xs font-black text-blue-600 uppercase tracking-[0.3em] mb-6">Professional & Volunteer Experience</h2>
+
+                <div class="space-y-10">
+                    <div>
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-xl font-bold text-gray-900">Founder</h3>
+                            <span class="text-sm font-bold text-gray-400">Comfort High School</span>
+                        </div>
+                        <p class="text-blue-600 font-semibold mb-3">Comfort High School Interact</p>
+                        <ul class="text-gray-600 list-disc ml-5 space-y-2">
+                            <li>Established the first Rotary-affiliated service club at Comfort High School.</li>
+                            <li>Coordinated community service projects and led weekly membership meetings.</li>
+                        </ul>
+                        <details class="mt-4 group">
+                            <summary class="inline-flex items-center text-sm font-bold text-gray-400 hover:text-blue-600 transition">
+                                <span class="plus-icon mr-2">+</span> Leadership Impact & Refection
+                            </summary>
+                            <div class="mt-4 p-6 bg-slate-50 rounded-2xl text-gray-600">
+                                <p class="mb-2"><strong>Challenge:</strong> Building a membership base from scratch in a small school district.</p>
+                                <p class="mb-2"><strong>Outcome:</strong> Successfully recruited over 15 active members within the first semester and organized three major local fundraisers.</p>
+                                <p><strong>Skills Gained:</strong> Organizational leadership, public speaking, and project management.</p>
+                            </div>
+                        </details>
+                    </div>
+
+                    <div>
+                        <div class="flex justify-between items-start">
+                            <h3 class="text-xl font-bold text-gray-900">Student Aide</h3>
+                            <span class="text-sm font-bold text-gray-400">Comfort Middle School</span>
+                        </div>
+                        <p class="text-blue-600 font-semibold mb-3">Academic Mentorship</p>
+                        <ul class="text-gray-600 list-disc ml-5 space-y-2">
+                            <li>Assisted educators in classroom management and individualized student tutoring.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <section class="resume-section">
+                <h2 class="text-xs font-black text-blue-600 uppercase tracking-[0.3em] mb-6">Awards & Honors</h2>
                 <div class="grid md:grid-cols-2 gap-6">
-                    <div class="p-6 bg-white rounded-3xl border border-gray-100 shadow-sm">
-                        <i class="fab fa-python text-3xl text-blue-600 mb-4"></i>
-                        <h4 class="font-bold text-gray-900">Microsoft Python Developer</h4>
-                        <p class="text-xs text-gray-500 mb-4 uppercase tracking-widest font-bold">Professional Certificate • 2026</p>
-                        <p class="text-sm text-gray-600">Focusing on programming fundamentals and automated simulations for physics data entry.</p>
+                    <div class="p-6 border border-gray-100 rounded-2xl hover:bg-slate-50 transition">
+                        <h3 class="font-bold text-gray-900">Service Above Self Scholarship</h3>
+                        <p class="text-sm text-blue-600 mb-2">Rotary Club of Kerrville</p>
+                        <details class="group">
+                            <summary class="text-xs font-bold text-gray-400 cursor-pointer">View Details</summary>
+                            <p class="mt-2 text-xs text-gray-500 italic leading-relaxed">Recognized for $5,000 for exceptional leadership and community commitment.</p>
+                        </details>
                     </div>
-                    <div class="p-6 bg-white rounded-3xl border border-gray-100 shadow-sm">
-                        <i class="fas fa-palette text-3xl text-pink-500 mb-4"></i>
-                        <h4 class="font-bold text-gray-900">Adobe Graphic Designer</h4>
-                        <p class="text-xs text-gray-500 mb-4 uppercase tracking-widest font-bold">Professional Certificate • 2026</p>
-                        <p class="text-sm text-gray-600">Mastering visual communication to present complex scientific data more effectively.</p>
+                    <div class="p-6 border border-gray-100 rounded-2xl hover:bg-slate-50 transition">
+                        <h3 class="font-bold text-gray-900">FCCLA STAR Event - 1st Place</h3>
+                        <p class="text-sm text-blue-600 mb-2">Region & State Level</p>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
 
-        <section id="experience" class="scroll-mt-32">
-            <h2 class="text-xs font-black text-blue-600 uppercase tracking-[0.4em] mb-8">Professional & Leadership Experience</h2>
-            <div class="space-y-12">
-                <div class="relative pl-8 border-l-2 border-gray-100">
-                    <div class="absolute w-4 h-4 bg-blue-600 rounded-full -left-[9px] top-2"></div>
-                    <div class="flex justify-between items-start mb-2">
-                        <h3 class="text-xl font-black text-gray-900">Founding President, Interact Club</h3>
-                        <span class="text-sm font-bold text-gray-400">2023 - 2025</span>
-                    </div>
-                    <p class="text-gray-500 font-bold mb-4 uppercase text-xs tracking-widest">Rotary International • Comfort High School</p>
-                    <ul class="text-gray-700 space-y-2 mb-4">
-                        <li>Established the first Rotary-affiliated youth service organization in the district.</li>
-                        <li>Recruited and managed 30+ active members and coordinated 5+ community-wide service events.</li>
-                    </ul>
-                    <details class="group">
-                        <summary class="text-xs font-black text-blue-600 cursor-pointer uppercase tracking-widest">+ Leadership Outcomes</summary>
-                        <div class="mt-4 p-6 bg-blue-50 rounded-2xl">
-                            <p class="text-sm text-blue-900"><strong>Key Impact:</strong> Secured the "Service Above Self" scholarship ($5,000) through the Rotary Club of Kerrville as a direct result of the club's growth and community footprint.</p>
-                        </div>
-                    </details>
+            <section>
+                <h2 class="text-xs font-black text-blue-600 uppercase tracking-[0.3em] mb-6">Skills & Competencies</h2>
+                <div class="flex flex-wrap gap-2">
+                    <span class="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-bold">Leadership</span>
+                    <span class="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-bold">Data Analysis</span>
+                    <span class="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-bold">Public Speaking</span>
+                    <span class="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-bold">Community Outreach</span>
+                    <span class="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-bold">Tutoring</span>
+                    <span class="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm font-bold">Event Planning</span>
                 </div>
+            </section>
 
-                <div class="relative pl-8 border-l-2 border-gray-100">
-                    <div class="absolute w-4 h-4 bg-gray-300 rounded-full -left-[9px] top-2"></div>
-                    <div class="flex justify-between items-start mb-2">
-                        <h3 class="text-xl font-black text-gray-900">Student Aide & Mentor</h3>
-                        <span class="text-sm font-bold text-gray-400">2024 - 2025</span>
-                    </div>
-                    <p class="text-gray-500 font-bold mb-4 uppercase text-xs tracking-widest">Comfort Middle School</p>
-                    <p class="text-gray-700">Supported educators in classroom delivery and provided 1-on-1 math tutoring for at-risk students.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="projects" class="scroll-mt-32">
-            <h2 class="text-xs font-black text-blue-600 uppercase tracking-[0.4em] mb-8">Selected Projects</h2>
-            <div class="grid md:grid-cols-2 gap-8">
-                <a href="{{ url_for('portfolio') }}" class="group p-8 bg-gray-900 rounded-[2.5rem] text-white hover:scale-[1.02] transition-transform shadow-xl">
-                    <h3 class="text-2xl font-black mb-2">Python for Data & Physics</h3>
-                    <p class="text-gray-400 text-sm mb-6">Developing custom Python scripts for plotting integration methods and kinematic simulations.</p>
-                    <div class="flex items-center gap-2 text-blue-400 font-bold text-xs uppercase tracking-widest">
-                        View Technical Narrative <i class="fas fa-arrow-right"></i>
-                    </div>
-                </a>
-                <div class="p-8 bg-white border border-gray-100 rounded-[2.5rem] shadow-sm">
-                    <h3 class="text-2xl font-black text-gray-900 mb-2">LeaderShape Institute</h3>
-                    <p class="text-gray-600 text-sm mb-6">Intensive 6-day curriculum focused on developing a "healthy disregard for the impossible" and ethical leadership.</p>
-                    <span class="inline-block px-3 py-1 bg-green-50 text-green-700 text-[10px] font-black uppercase rounded-full">Completed Summer 2025</span>
-                </div>
-            </div>
-        </section>
-
-        <section id="skills" class="scroll-mt-32">
-            <h2 class="text-xs font-black text-blue-600 uppercase tracking-[0.4em] mb-8">Technical & Soft Skills</h2>
-            <div class="grid md:grid-cols-3 gap-12">
-                <div>
-                    <h4 class="text-sm font-black text-gray-900 uppercase mb-6 flex items-center gap-2">
-                        <i class="fas fa-flask text-blue-600"></i> Analytical
-                    </h4>
-                    <div class="space-y-4">
-                        <div>
-                            <div class="flex justify-between text-xs font-bold mb-1 italic"><span>Mathematical Modeling</span><span>Advanced</span></div>
-                            <div class="skill-bar"><div class="skill-progress w-[90%]"></div></div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between text-xs font-bold mb-1 italic"><span>Data Visualization</span><span>Intermediate</span></div>
-                            <div class="skill-bar"><div class="skill-progress w-[75%]"></div></div>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <h4 class="text-sm font-black text-gray-900 uppercase mb-6 flex items-center gap-2">
-                        <i class="fas fa-terminal text-blue-600"></i> Programming
-                    </h4>
-                    <ul class="flex flex-wrap gap-2">
-                        <li class="px-3 py-1 bg-slate-100 rounded-lg text-xs font-bold">Python (NumPy/Matplotlib)</li>
-                        <li class="px-3 py-1 bg-slate-100 rounded-lg text-xs font-bold">LaTeX</li>
-                        <li class="px-3 py-1 bg-slate-100 rounded-lg text-xs font-bold">HTML/Tailwind CSS</li>
-                    </ul>
-                </div>
-                <div>
-                    <h4 class="text-sm font-black text-gray-900 uppercase mb-6 flex items-center gap-2">
-                        <i class="fas fa-users text-blue-600"></i> Leadership
-                    </h4>
-                    <ul class="flex flex-wrap gap-2">
-                        <li class="px-3 py-1 bg-blue-600 text-white rounded-lg text-xs font-bold">Public Speaking</li>
-                        <li class="px-3 py-1 bg-blue-600 text-white rounded-lg text-xs font-bold">Crisis Management</li>
-                        <li class="px-3 py-1 bg-blue-600 text-white rounded-lg text-xs font-bold">Recruitment</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
+        </div>
     </main>
 
-    <section class="py-24 bg-gray-900 text-white rounded-t-[3rem]">
+    <section id="contact" class="pt-24 pb-32 bg-gray-900 text-white rounded-t-[3rem] -mt-8">
         <div class="max-w-4xl mx-auto px-6 text-center">
-            <h2 class="text-4xl font-black mb-6">Need a formal copy?</h2>
-            <p class="text-gray-400 mb-8">The digital resume provides the story, but the PDF provides the tradition.</p>
-            <a href="{{ url_for('static', filename='Hunter_Bradshaws_Resume.pdf') }}" class="inline-block bg-blue-600 px-12 py-4 rounded-2xl font-black text-xl hover:bg-blue-700 transition transform hover:scale-105">
-                Download Official Resume
-            </a>
+            <h2 class="text-3xl font-black mb-8">Ready to collaborate?</h2>
+            <div class="flex flex-col sm:flex-row justify-center gap-6">
+                <a href="mailto:hunter.bradshaw@my.utsa.edu" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-4 px-10 rounded-2xl transition">
+                    Send Email
+                </a>
+                <a href="https://www.linkedin.com/in/hunter-bradshaw/" class="bg-transparent border border-gray-700 hover:border-white text-white font-bold py-4 px-10 rounded-2xl transition">
+                    LinkedIn Profile
+                </a>
+            </div>
+            <p class="mt-12 text-gray-500 text-sm">Last Updated: January 2026</p>
         </div>
     </section>
 {% endblock %}
