@@ -56,34 +56,24 @@ def linktree():
 
 # --- Error Handlers ---
 
-@app.errorhandler(404)
-def page_not_found(e):
-    # This triggers if a URL doesn't exist
+@app.errorhandler(Exception)
+def handle_error(e):
+    error_code = getattr(e, 'code', 500)
+    
+    error_messages = {
+        404: "The page you're looking for has vanished into a black hole.",
+        500: "Our server encountered a glitch in the simulation."
+    }
+    
+    error_message = error_messages.get(error_code, f"Error {error_code} occurred.")
+    
+    tb = traceback.format_exc() if error_code == 500 else "N/A"
+    
     return render_template('error.html', 
-        error_code=404, 
-        error_message="The page you're looking for has vanished into a black hole.",
-        traceback="N/A - Page simply not found."
-    ), 404
-
-@app.errorhandler(403)
-def forbidden(e):
-    # This triggers if the Dossier Code is wrong
-    return render_template('error.html', 
-        error_code=403, 
-        error_message="Access Denied. A valid credentials code is required to view this dossier.",
-        traceback="Security Exception: Unauthorized Access Attempt"
-    ), 403
-
-@app.errorhandler(500)
-def internal_error(e):
-    # This triggers if your Python code crashes
-    # It captures the "traceback" so you can fix the bug
-    tb = traceback.format_exc() 
-    return render_template('error.html', 
-        error_code=500, 
-        error_message="Our server encountered a glitch in the simulation.",
+        error_code=error_code, 
+        error_message=error_message,
         traceback=tb
-    ), 500
+    ), error_code
 
 if __name__ == '__main__':
     app.run(debug=True)
