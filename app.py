@@ -60,6 +60,10 @@ def title_to_slug(title):
 def home():
     return render_template('index.html', title="Home")
 
+@app.route('/privacy')
+def privacy():
+    return render_template('privacy.html', title="Privacy & Terms")
+
 @app.route('/portfolio')
 def portfolio():
     # Load your new JSON structure
