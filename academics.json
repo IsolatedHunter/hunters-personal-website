@@ -37,7 +37,7 @@
         "university": "University of Texas at San Antonio",
         "term": "2025-Fall",
         "credits": 3,
-        "category": "Major Support",
+        "category": "Major",
         "level": "Lower-Division",
         "learned": "Studied limits, continuity, derivatives, and applications of differentiation to physical and mathematical problems."
     },
@@ -51,7 +51,7 @@
         "university": "University of Texas at San Antonio",
         "term": "2026-Spring",
         "credits": 3,
-        "category": "Major Support",
+        "category": "Major",
         "level": "Lower-Division",
         "learned": "Explores integration techniques, applications of integrals, sequences and series, and introductory differential equations."
     },
@@ -69,20 +69,6 @@
         "category": "Major Support",
         "level": "Lower-Division",
         "learned": "Introduced atomic structure, stoichiometry, thermochemistry, chemical bonding, and states of matter."
-    },
-    {
-        "number": "CHE 1121",
-        "name": "General Chemistry I Laboratory",
-        "course_type": "Lab",
-        "parent_course": "CHE 1103",
-        "linked_courses": [],
-        "status": "Passed",
-        "university": "Angelo State University",
-        "term": "2024-Fall",
-        "credits": 1,
-        "category": "Major Support",
-        "level": "Lower-Division",
-        "learned": "Performed laboratory experiments emphasizing measurement techniques, chemical reactions, and data analysis."
     },
     {
         "number": "CHE 1113",
@@ -138,7 +124,7 @@
         "university": "University of Texas at Austin",
         "term": "2025-Spring",
         "credits": 3,
-        "category": "Extra",
+        "category": "Major Support",
         "level": "Lower-Division",
         "learned": "Studied mechanics, energy, and basic thermodynamics using algebra-based problem solving."
     },
@@ -152,7 +138,7 @@
         "university": "University of Texas at Austin",
         "term": "2025-Spring",
         "credits": 1,
-        "category": "Extra",
+        "category": "Major Support",
         "level": "Lower-Division",
         "learned": "Conducted introductory physics experiments with emphasis on measurement, graphing, and error analysis."
     },
@@ -167,7 +153,7 @@
         "university": "Angelo State University",
         "term": "2024-Fall",
         "credits": 3,
-        "category": "Core",
+        "category": "Extra",
         "level": "Lower-Division",
         "learned": "Examined cellular biology, tissues, and musculoskeletal and nervous systems."
     },
@@ -181,7 +167,7 @@
         "university": "Angelo State University",
         "term": "2024-Fall",
         "credits": 1,
-        "category": "Extra",
+        "category": "Core",
         "level": "Lower-Division",
         "learned": "Performed anatomical dissections and physiological experiments supporting lecture content."
     },
@@ -195,7 +181,7 @@
         "university": "Angelo State University",
         "term": "2025-Spring",
         "credits": 3,
-        "category": "Core",
+        "category": "Extra",
         "level": "Lower-Division",
         "learned": "Studied cardiovascular, respiratory, endocrine, digestive, and reproductive systems."
     },
@@ -209,7 +195,7 @@
         "university": "Angelo State University",
         "term": "2025-Spring",
         "credits": 1,
-        "category": "Extra",
+        "category": "Core",
         "level": "Lower-Division",
         "learned": "Applied physiological measurement techniques and lab-based data analysis."
     },

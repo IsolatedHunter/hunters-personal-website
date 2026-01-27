@@ -5,11 +5,10 @@ import traceback
 import secrets
 import smtplib
 from email.message import EmailMessage
-from dotenv import load_dotenv
+from dotenv import load_dotenv # type: ignore
 from flask import Flask, render_template, abort, request, flash, redirect, url_for
 
 load_dotenv()
-
 app = Flask(__name__)
 app.secret_key = os.getenv("FLASK_SECRET_KEY")
 
