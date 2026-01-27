@@ -3,20 +3,48 @@ import json
 import os
 import traceback
 import secrets
+import smtplib
+from email.message import EmailMessage
+from dotenv import load_dotenv
 from flask import Flask, render_template, abort, request, flash, redirect, url_for
 
+load_dotenv()
 
 app = Flask(__name__)
-if 'SECRET_KEY' in os.environ:
-    app.secret_key = os.environ['SECRET_KEY']
-else:
-    app.secret_key = secrets.token_urlsafe(32)
-    print("[WARNING] No SECRET_KEY set in environment. Generated a random secret key for this session.")
+app.secret_key = os.getenv("FLASK_SECRET_KEY")
 
 # Allow routes to be accessed with or without trailing slashes
 app.url_map.strict_slashes = False
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+def send_email(type, name, email, role, phone, message):
+    msg = EmailMessage()
+    msg["Subject"] = f'New Contact Form "{type}"'
+    msg["From"] = os.getenv("EMAIL_ADDRESS")
+    msg["To"] = "hunter.bradshaw@my.utsa.edu"
+
+    msg.set_content(f"""
+New contact form submission:
+
+Name: {name}
+Email: {email}
+Phone: {phone}
+Role: {role}
+Message:
+{message}
+
+""")
+
+    with smtplib.SMTP_SSL(
+        os.getenv("EMAIL_HOST"),
+        int(os.getenv("EMAIL_PORT"))
+    ) as server:
+        server.login(
+            os.getenv("EMAIL_ADDRESS"),
+            os.getenv("EMAIL_PASSWORD")
+        )
+        server.send_message(msg)
 
 def load_json_data(filename):
     file_path = os.path.join(BASE_DIR, filename)
@@ -60,11 +88,14 @@ def campaign():
 @app.route('/campaign/join', methods=['GET', 'POST'])
 def join_campaign():
     if request.method == 'POST':
-        # Here you would normally save to a database or send an email
         name = request.form.get('name')
         email = request.form.get('email')
         role = request.form.get('role')
-        flash("Temporaly this system is down! Please try again later.", "error")
+        phone = request.form.get('phone')
+        type = "Join Campaign"
+        message = request.form.get('message')
+        send_email(type, name, email, role, phone, message)
+        flash(f"We've received your information, {name}! \nThank you for joining the campaign. We'll be in touch soon.", "success")
     return render_template('join.html')
 
 @app.route('/resume')
