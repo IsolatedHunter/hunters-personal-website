@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KL2XHFVVFL"></script>
-    <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-KL2XHFVVFL');
-    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Hunter Bradshaw{% endblock %}</title>
@@ -118,19 +109,52 @@
         </div>
 
         <script>
-            // Cookie Consent Banner Logic
-            document.addEventListener('DOMContentLoaded', function() {
-                const banner = document.getElementById('cookie-banner');
-                const btn = document.getElementById('cookie-dismiss');
-                if (localStorage.getItem('cookieConsent') === 'true') {
-                    banner.style.display = 'none';
-                }
-                btn.addEventListener('click', function() {
-                    banner.style.display = 'none';
-                    localStorage.setItem('cookieConsent', 'true');
-                });
-            });
-        </script>
+      // Google Analytics initialization function
+      function initializeGoogleAnalytics() {
+        if (window.gtagInitialized) {
+          console.log('Google Analytics already initialized, skipping...');
+          return; // Prevent double initialization
+        }
+        
+        console.log('Initializing Google Analytics...');
+        
+        // Load gtag.js
+        const script = document.createElement('script');
+        script.async = true;
+        script.src = 'https://www.googletagmanager.com/gtag/js?id=G-KL2XHFVVFL';
+        document.head.appendChild(script);
+        
+        // Initialize gtag
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-KL2XHFVVFL');
+        window.gtagInitialized = true;
+        
+        console.log('Google Analytics initialized successfully');
+      }
+
+      // Cookie Consent Banner Logic
+      document.addEventListener('DOMContentLoaded', function() {
+        const banner = document.getElementById('cookie-banner');
+        const dismissBtn = document.getElementById('cookie-dismiss');
+        
+        if (!banner || !dismissBtn) return;
+        
+        // Check if user already consented
+        if (localStorage.getItem('cookieConsent') === 'true') {
+          banner.classList.add('hidden');
+          initializeGoogleAnalytics(); // Load analytics if already consented
+        }
+        
+        // Handle consent button click
+        dismissBtn.addEventListener('click', function() {
+          banner.classList.add('hidden');
+          localStorage.setItem('cookieConsent', 'true');
+          initializeGoogleAnalytics(); // Load analytics on consent
+        });
+      });
+    </script>
 
     <script>
         // Mobile Menu Logic
