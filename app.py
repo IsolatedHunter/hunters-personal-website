@@ -57,7 +57,7 @@ def title_to_slug(title):
     return title.lower().strip().replace(' ', '-').replace('&', 'and')
 
 @app.route('/')
-def home():
+def index():
     return render_template('index.html', title="Home")
 
 @app.route('/privacy')
