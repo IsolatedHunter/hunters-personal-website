@@ -21,7 +21,7 @@ def send_email(type, name, email, role, phone, message):
     msg = EmailMessage()
     msg["Subject"] = f'New Contact Form "{type}"'
     msg["From"] = os.getenv("EMAIL_ADDRESS")
-    msg["To"] = "hunter.bradshaw@my.utsa.edu"
+    msg["To"] = "contact@hunterhq.me"
 
     msg.set_content(f"""
 New contact form submission:
@@ -79,28 +79,7 @@ def portfolio_detail(slug):
         if title_to_slug(entry['title']) == slug:
             return render_template('portfolio_detail.html', project=entry)
     abort(404)
-'''
-@app.route('/c')
-def c_redirect():
-    return redirect(url_for('campaign'))
 
-@app.route('/campaign')
-def campaign():
-    return render_template('campaign.html')
-
-@app.route('/campaign/join', methods=['GET', 'POST'])
-def join_campaign():
-    if request.method == 'POST':
-        name = request.form.get('name')
-        email = request.form.get('email')
-        role = request.form.get('role')
-        phone = request.form.get('phone')
-        type = "Join Campaign"
-        message = request.form.get('message')
-        send_email(type, name, email, role, phone, message)
-        flash(f"We've received your information, {name}! \nThank you for joining the campaign. We'll be in touch soon.", "success")
-    return render_template('join.html')
-'''
 @app.route('/resume')
 def resume():
     return render_template('resume.html')
