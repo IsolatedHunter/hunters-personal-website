@@ -71,10 +71,6 @@ def portfolio():
     # Pass the list of entries
     return render_template('portfolio.html', entries=data['entries'])
 
-@app.route('/.well-known/discord')
-def discord_redirect():
-    return 'dh=3a0dd37e7d4b5bcafb306c32b5b3ec01c39cf5fd'
-
 @app.route('/portfolio/<slug>')
 def portfolio_detail(slug):
     data = load_json_data('portfolio_data.json')
@@ -83,7 +79,7 @@ def portfolio_detail(slug):
         if title_to_slug(entry['title']) == slug:
             return render_template('portfolio_detail.html', project=entry)
     abort(404)
-
+'''
 @app.route('/c')
 def c_redirect():
     return redirect(url_for('campaign'))
@@ -104,7 +100,7 @@ def join_campaign():
         send_email(type, name, email, role, phone, message)
         flash(f"We've received your information, {name}! \nThank you for joining the campaign. We'll be in touch soon.", "success")
     return render_template('join.html')
-
+'''
 @app.route('/resume')
 def resume():
     return render_template('resume.html')
