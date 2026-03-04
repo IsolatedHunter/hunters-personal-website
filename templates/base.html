@@ -186,6 +186,27 @@
       });
     </script>
 
+        <script>
+            // Mailto fallback: ensure mail client opens across browsers
+            document.addEventListener('DOMContentLoaded', function() {
+                document.querySelectorAll('a[href^="mailto:"]').forEach(function(anchor) {
+                    anchor.addEventListener('click', function(e) {
+                        // attempt direct navigation — lets the browser handle mailto
+                        try {
+                            window.location.href = anchor.getAttribute('href');
+                        } catch (err) {
+                            // fallback for strict environments: use a hidden iframe
+                            var iframe = document.createElement('iframe');
+                            iframe.style.display = 'none';
+                            iframe.src = anchor.getAttribute('href');
+                            document.body.appendChild(iframe);
+                            setTimeout(function() { document.body.removeChild(iframe); }, 1000);
+                        }
+                    });
+                });
+            });
+        </script>
+
     {% block scripts %}{% endblock %}
 </body>
 </html>
