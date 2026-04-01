@@ -1,19 +1,6 @@
 {
     "entries": [
         {
-            "type": "project",
-            "title": "Python for Data and Physics",
-            "category": "programming",
-            "tag": "Python",
-            "status": "In Progress",
-            "institution": "Self-study / Online",
-            "term": "Spring 2026",
-            "description": "Learning Python alongside physics courses for data entry, plotting, and simulations.",
-            "content": "<blockquote><strong>I ain't reading all that:</strong> I’m teaching myself Python to stop doing math by hand. I’m using libraries like NumPy and Matplotlib to turn physics formulas into interactive simulations. It feels like finally getting a superpower that makes my homework actually look cool and move in real-time.</blockquote><h4>The Vision: From Notebooks to Numerical Models</h4><p>In the world of undergraduate physics, there is a traditional 'rite of passage' involving endless sheets of notebook paper and the constant fear of a carried-over minus sign ruining a three-hour calculation. My 'Python for Data and Physics' project is my personal transition from being a student who calculates to a researcher who simulates. Python has become the lingua franca of the scientific community because it is expressive and allows for 'rapid prototyping' of physical theories.</p><h4>The Technical Toolkit</h4><p>I am mastering the 'scientific stack', specifically <strong>NumPy</strong> for high-performance numerical arrays and <strong>Matplotlib</strong> for visualization. NumPy allows me to perform calculations on entire arrays of time steps simultaneously, which is essential for modeling complex systems.  Beyond simple plotting, I am exploring <strong>SciPy</strong> for advanced integration and optimization, which helps me find the 'best fit' for noisy experimental data gathered in my UTSA labs.</p><h4>The Math of Motion</h4><p>A major focus this semester is the <strong>Euler-Cromer method</strong> of numerical integration. I am building simulations that model planetary orbits and simple harmonic motion. By breaking time into tiny 'steps,' I can calculate how a system evolves over hours or years in just a few seconds of compute time. This has fundamentally changed how I view my coursework; gravity is no longer just a constant in a textbook, but a vector field that I can manipulate in my code.</p><h4>Reflections and Future Goals</h4><p>There is a specific kind of 'Aha!' moment that happens when you write twenty lines of code and see a wave function evolve across your screen exactly as described. It feels like I’ve stopped looking at the map and finally started driving the car. Moving forward, I aim to build a fully functional 'Physics Dashboard' that takes raw CSV data and generates publication-ready analysis reports automatically.</p>",
-            "gradient": "from-blue-400 to-green-500",
-            "icon": "fas fa-code"
-        },
-        {
             "type": "experience",
             "title": "RYLA Leadership Camp Participation",
             "category": "leadership",
@@ -25,45 +12,6 @@
             "content": "<blockquote><strong>I ain't reading all that:</strong> I went to a Rotary leadership camp where they put us through intense team challenges. It wasn't just 'feel good' stuff; it taught me how to actually manage people and stay calm when things go wrong. I feel way more confident leading a lab group now.</blockquote><h4>The Social Physics of Leadership</h4><p>Science is rarely a solo sport. The quality of a lab's output is often limited by the quality of the team's coordination. This is why I pursued the <strong>Rotary Youth Leadership Awards (RYLA)</strong>. This intensive program drops students into the 'crucible of leadership' to test their resilience and communication styles under pressure.</p><h4>The Crucible: Experiential Learning</h4><p>RYLA isn't about taking notes; it's about action. We were tasked with complex physical puzzles, like building structures with limited resources under strict time constraints. These activities are designed to trigger stress, which is where true leadership emerges.  I learned that a team has its own kind of inertia. If you push too hard without building trust, the friction increases and the project stalls.</p><h4>The Servant Leadership Model</h4><p>The most profound lesson was the shift toward 'Servant Leadership.' In this model, the leader's job is to remove obstacles so the rest of the team can shine. I realized that delegating isn't about dumping work; it’s about empowerment. This has changed how I approach group projects at UTSA, where I now spend more time listening and ensuring every member has the resources they need to succeed.</p><h4>Long-term Impact</h4><p>I feel a sense of relief after this experience. Before RYLA, I felt I had to do everything myself. Now, I understand that clear communication is the antidote to project failure. It has made my academic life significantly more collaborative and less stressful, allowing me to focus on high-level strategy rather than micromanagement.</p>",
             "gradient": "from-green-300 to-blue-400",
             "icon": "fas fa-users"
-        },
-        {
-            "type": "certificate",
-            "title": "Microsoft Python Developer Professional Certificate",
-            "category": "programming",
-            "tag": "Professional Dev",
-            "status": "In Progress",
-            "institution": "Coursera / Microsoft",
-            "term": "2026",
-            "description": "Professional certificate in Python development covering programming fundamentals and automation.",
-            "content": "<blockquote><strong>I ain't reading all that:</strong> I'm getting a pro certification from Microsoft to prove I can build full websites and manage code on GitHub like a professional engineer. It makes me feel like I’m moving from a student who codes to an actual software developer ready for a real job.</blockquote><h4>Professionalizing the Codebase</h4><p>There is a massive difference between writing a script that works on your laptop and building software that thousands of people can use. My journey through the <strong>Microsoft Python Developer Professional Certificate</strong> is about crossing that bridge. This isn't just about syntax; it's about <strong>Software Engineering</strong>, the art of building robust, scalable applications.</p><h4>The Developer's Toolbelt</h4><p>The curriculum covers the full <strong>Software Development Lifecycle (SDLC)</strong>.  I am currently deep-diving into <strong>Django and Flask</strong> to power web back-ends, and learning the professional way to use <strong>Git and GitHub</strong>. Moving from saving files as 'version_1' to using pull requests and branching has been a revelation for my workflow.</p><h4>AI-Powered Development</h4><p>A key focus of this certification is the integration of <strong>Generative AI</strong> into the developer workflow. We are learning to use AI as a pair-programmer to speed up debugging and boilerplate generation. This represents the future of the industry, and staying ahead of that curve is vital for any modern developer.</p><h4>Legitimacy and Confidence</h4><p>Following a curriculum designed by Microsoft engineers gives me a blueprint for excellence. Every time I pass a module involving complex database integration or cloud deployment, I feel my 'imposter syndrome' fade. It is hard work, but the satisfaction of a 'Build Succeeded' message is a high that never gets old. It positions me perfectly for a career in computational physics or software engineering.</p>",
-            "gradient": "from-blue-600 to-indigo-700",
-            "icon": "fab fa-microsoft"
-        },
-        {
-            "type": "certificate",
-            "title": "Adobe Graphic Designer Professional Certificate",
-            "category": "leadership",
-            "tag": "Design",
-            "status": "In Progress",
-            "institution": "Coursera / Adobe",
-            "term": "2026",
-            "description": "Learn design fundamentals, image editing, and portfolio-ready projects using Adobe tools.",
-            "content": "<blockquote><strong>I ain't reading all that:</strong> I'm learning pro Adobe tools (Photoshop, Illustrator) to make my research and projects look amazing. It’s not just about 'art', it's about using design and AI to communicate complex ideas clearly. It’s a great creative break from heavy math.</blockquote><h4>The Science of Visual Communication</h4><p>Why would a Physics major study Graphic Design? Because the greatest discovery is useless if no one understands it. Design is the bridge between raw data and human understanding. This <strong>Adobe Professional Certificate</strong> is my path to mastering that bridge.</p><h4>Mastery of the Suite</h4><p>The program is a masterclass in the 'Big Three': <strong>Photoshop</strong> for image manipulation, <strong>Illustrator</strong> for vector graphics, and <strong>InDesign</strong> for layout.  I am also learning to use <strong>Adobe Firefly</strong>, an AI engine that allows for rapid iteration on visual concepts while maintaining high standards of originality.</p><h4>Visual Hierarchy in Research</h4><p>Applying these principles to my academic work has been a game-changer. When designing a research poster, I am no longer just throwing text onto a slide. I am thinking about <strong>Visual Hierarchy</strong>, guiding the viewer's eye from the hypothesis to the results using color theory and typography. This ensures my work is readable and impactful at conferences.</p><h4>Creative Balance</h4><p>I feel a strange sense of peace when working in Illustrator. It is a different kind of problem-solving. In math, there is one right answer; in design, there are infinite answers, and your job is to find the most <em>effective</em> one. It keeps me from burning out on formulas and makes me a more 'complete' thinker, someone who can calculate the stars and also paint them.</p>",
-            "gradient": "from-red-500 to-orange-500",
-            "icon": "fab fa-adobe"
-        },
-        {
-            "type": "certificate",
-            "title": "Microsoft Public Relations Associate Certificate",
-            "category": "leadership",
-            "tag": "Business",
-            "status": "In Progress",
-            "institution": "Coursera / Microsoft",
-            "term": "2026",
-            "description": "Professional certificate for public relations and communications, covering media relations and crisis management.",
-            "content": "<blockquote><strong>I ain't reading all that:</strong> I’m learning the business side of PR, how to handle media, write press releases, and manage a brand's reputation. I want to be able to explain science to the public without it being boring. It helps me be a professional 'voice' for science.</blockquote><h4>Engineering the Narrative</h4><p>In an era of complex global challenges, the ability to communicate clearly and ethically is critical. The <strong>Microsoft PR and Communications Associate</strong> certificate is about the strategic side of messaging. It moves into the realm of <strong>Integrated Communications</strong>, where every message is part of a purposeful narrative.</p><h4>Frameworks and Crisis Management</h4><p>The curriculum covers <strong>Media Relations</strong> and <strong>Crisis Communication</strong>. In Crisis Comm, you learn how to respond when a project fails or a company makes a mistake.  You learn the importance of transparency, speed, and accountability, frameworks used by the world's largest organizations to maintain public trust.</p><h4>Data-Driven Communication</h4><p>I am learning how to use analytics to track the 'sentiment' of a campaign. It’s not just about sending a tweet; it’s about understanding who it reached and how it changed their perception. This 'data-driven' approach appeals to the mathematician in me, as it allows for the measurement of something as abstract as reputation.</p><h4>A Voice for Science</h4><p>This is the 'missing link' in my education. Many scientists are brilliant but can't explain their work to the public or a politician. I feel a responsibility to be different. This course prepares me to advocate for research funding and explain breakthroughs to the general public. Every case study I analyze makes my world-view expand, teaching me to be not just a scientist, but an advocate for science.</p>",
-            "gradient": "from-indigo-400 to-purple-600",
-            "icon": "fas fa-bullhorn"
         },
         {
             "type": "experience",
@@ -103,6 +51,71 @@
             "content": "<blockquote><strong>I ain't reading all that:</strong> I spent a week at an intense leadership retreat that totally changed my perspective. I stopped thinking about leadership as 'being the boss' and started thinking about it as 'creating a vision.' My vision is to make high-level science education accessible to kids in rural towns like mine.</blockquote><h4>The Crucible of Leadership</h4><p>In the summer of 2025, I was selected to attend the <strong>LeaderShape Institute</strong>, an intensive six-day residential program designed to help students explore the complexities of ethical leadership. It was, in many ways, a 'crucible' experience. We were stripped of our usual distractions and forced to confront the core of who we are and what we stand for. LeaderShape moves away from the 'command and control' style of leadership and pushes toward a model of <strong>Visionary Leadership</strong>.</p><h4>Living in Possibility</h4><p>A central concept of the institute is 'Living in Possibility.' Most people lead by looking at what is currently wrong and trying to fix it. LeaderShape taught me to look at what *could* be and work backward from there.  We were challenged to create a 'Breakthrough Blueprint', a vision for the world that doesn't currently exist. This was a turning point for me; I realized that my interest in physics and my passion for leadership weren't separate, they were two sides of the same coin.</p><h4>My Vision: Science Without Borders</h4><p>My vision statement developed at LeaderShape is to <strong>bridge the gap between elite scientific research and rural education</strong>. Coming from a small town, I know firsthand that students in rural areas often lack the resources, mentorship, and equipment found in big cities. My 'Breakthrough' is a future where a student in a town like Comfort has the same access to computational physics tools and mentorship as a student in Austin or San Francisco. Ethical leadership, to me, means using my UTSA education to build those bridges.</p><h4>Integrity and the Ethical Edge</h4><p>We spent a significant amount of time discussing the 'Ethical Edge.' In science, integrity is non-negotiable, data cannot be forged, and results must be reproducible. LeaderShape taught me that leadership requires the same level of <strong>Radical Integrity</strong>. You have to be willing to stand for your values even when it’s unpopular.  We participated in simulations that tested our ability to make hard choices under pressure, teaching me that a leader's character is built in the quiet moments before the crisis hits.</p><h4>The Lasting Impact</h4><p>LeaderShape didn't just give me a certificate; it gave me a community of like-minded 'visionaries.' I left the program with a renewed sense of purpose for my final years at UTSA. I am no longer just studying physics to get a degree; I am studying to gain the tools necessary to fulfill my vision. I feel more equipped to lead research teams, mentor younger students, and advocate for educational reform with a clear, ethical voice.</p>",
             "gradient": "from-indigo-500 to-blue-600",
             "icon": "fas fa-atom"
+        },
+        {
+            "type": "experience",
+            "title": "Student Leadership Academy",
+            "category": "leadership",
+            "tag": "Leadership Development",
+            "status": "In Progress",
+            "institution": "UTSA",
+            "term": "2025 - Present",
+            "description": "Participating in a comprehensive leadership training program based on the Social Change Model to develop marketable professional competencies.",
+            "content": "<blockquote><strong>I ain't reading all that:</strong> I am going through UTSA's Student Leadership Academy to learn actual, marketable skills that employers care about. It's based on the Social Change Model and helps translate all my volunteer work into a professional toolkit.</blockquote><h4>Professionalizing Leadership</h4><p>While my experiences with VOICES and Interact Club gave me practical experience, the <strong>Student Leadership Academy (SLA)</strong> at UTSA is providing the formal framework. It's not enough to just want to help; you need the organizational communication and team management skills to execute effectively.</p><h4>The Social Change Model</h4><p>The SLA pathway is structured around the Social Change Model of Leadership Development, broken down into Individual, Group, and Society levels. By working through these workshops, I am systematically examining how my personal values align with group dynamics and societal needs. It's like breaking down the mechanics of a team and optimizing the moving parts.</p><h4>Marketable Competencies</h4><p>What I appreciate most about the SLA is its focus on NACE professional competencies. We aren't just discussing abstract theories; we are practicing event planning, conflict resolution, and critical thinking. This ensures that as I prepare for a career in computational physics and academia, I have the soft skills required to lead research teams effectively and navigate complex institutional environments.</p>",
+            "gradient": "from-teal-400 to-emerald-500",
+            "icon": "fas fa-award"
+        },
+        {
+            "type": "project",
+            "title": "hunterhq.me",
+            "category": "development",
+            "tag": "Full-Stack Developer",
+            "status": "Live",
+            "institution": "Personal Project",
+            "term": "Spring 2026",
+            "description": "Designed and developed a custom personal portfolio website using Python and Flask to host and showcase computational and academic projects.",
+            "content": "<blockquote><strong>I ain't reading all that:</strong> I built my own personal portfolio website from scratch using Python and Flask. It's a live hub where I can showcase my computational physics projects, web apps, and leadership experiences all in one place.</blockquote><h4>Building a Digital Headquarters</h4><p>As I started developing more complex code in MATLAB and Python, I realized I needed a centralized place to document and share my work. Instead of using a standard template builder, I decided to code my own portfolio from the ground up. <strong>hunterhq.me</strong> is the result—a custom-built web application designed to host my academic and personal projects.</p><h4>Full-Stack Development with Flask</h4><p>Developing this site was a deep dive into full-stack web development. I utilized <strong>Flask</strong>, a Python web framework, which allowed me to seamlessly integrate my backend logic with the frontend presentation. This project forced me to learn about routing, template rendering, and server deployment, adding a robust set of software engineering skills to my physics background.</p><h4>Showcasing Multidisciplinary Work</h4><p>The real value of hunterhq.me is its ability to tie together the different facets of my life. It houses my MATLAB data analysis scripts next to my reflections on servant leadership. It stands as a living document of my progress and a professional endpoint for university applications and future research opportunities.</p>",
+            "gradient": "from-blue-400 to-cyan-500",
+            "icon": "fas fa-laptop-code"
+        },
+        {
+            "type": "experience",
+            "title": "Study Abroad in Athens",
+            "category": "global",
+            "tag": "Global Scholar",
+            "status": "Planned",
+            "institution": "UTSA",
+            "term": "Summer 2026",
+            "description": "Upcoming summer study abroad program in Athens, Greece, preceded by a multi-country cultural tour across Europe.",
+            "content": "<blockquote><strong>I ain't reading all that:</strong> I'm heading to Europe in the summer of 2026! I'm backpacking through Italy, Austria, Germany, and Switzerland, and then settling down in Athens, Greece, for a month-long study abroad program.</blockquote><h4>A Global Perspective</h4><p>Science is an international endeavor, and understanding different cultures is crucial for future global collaborations. To broaden my perspective before jumping into heavy upper-division coursework, I've planned an extensive European experience for the summer of 2026.</p><h4>The European Tour</h4><p>Before my formal studies begin, I will be embarking on a multi-country tour. I'll be navigating the logistics of traveling through <strong>Italy, Austria, Germany, and Switzerland</strong>. This independent travel is a test of planning and adaptability, giving me a chance to experience the history and infrastructure of these distinct nations firsthand.</p><h4>Academic Immersion in Athens</h4><p>The cornerstone of the summer is my study abroad program in <strong>Athens, Greece</strong>, running from June 23 to July 25, 2026. Studying in the birthplace of Western philosophy and early mathematics will be a profound experience. I look forward to immersing myself in the local culture, studying the historical foundations of scientific thought, and connecting with international peers.</p>",
+            "gradient": "from-yellow-400 to-orange-500",
+            "icon": "fas fa-globe-europe"
+        },
+        {
+            "type": "project",
+            "title": "SGA Secure Voting System",
+            "category": "development",
+            "tag": "Lead Developer",
+            "status": "In Progress",
+            "institution": "Student Government Association",
+            "term": "Spring 2026",
+            "description": "Developing a secure, Flask-based voting application for the UTSA Student Government Association to ensure transparent campus elections.",
+            "content": "<blockquote><strong>I ain't reading all that:</strong> I'm developing a secure, custom voting application for the UTSA Student Government Association using Python and Flask. It's a high-stakes project that ensures our campus elections are transparent and reliable.</blockquote><h4>Intersection of Tech and Governance</h4><p>Through my involvement with the <strong>Student Government Association (SGA)</strong>, I noticed a critical need for a more robust and transparent election process. Leveraging my growing skills in web development, I took on the responsibility of designing and building a brand-new, secure voting system for the student body.</p><h4>Engineering Secure Solutions</h4><p>This project goes far beyond a simple web page; it requires rigorous attention to data integrity and security. Built with <strong>Flask</strong>, the application handles user authentication, secure vote logging, and real-time tabulation while ensuring that each student can only vote once. It's a practical application of computational logic to solve a real-world institutional problem.</p><h4>Impact on Campus Democracy</h4><p>Deploying this system directly impacts thousands of UTSA students by guaranteeing a fair and efficient democratic process. It has taught me how to manage a software project with real stakeholders, tight deadlines, and zero room for error. Seeing my code actively facilitate student leadership and governance is incredibly rewarding.</p>",
+            "gradient": "from-red-400 to-pink-500",
+            "icon": "fas fa-vote-yea"
+        },
+        {
+            "type": "experience",
+            "title": "Future Trajectory & Goals",
+            "category": "future",
+            "tag": "Aspiring Astronaut",
+            "status": "In Progress",
+            "institution": "Personal Roadmap",
+            "term": "2026 & Beyond",
+            "description": "Preparing for a transfer to UT Austin, pursuing a career in computational physics research, and training for the San Antonio Marathon.",
+            "content": "<blockquote><strong>I ain't reading all that:</strong> I have big plans: transferring to UT Austin for Fall 2026, pursuing a career in computational physics, training for a marathon this December, and eventually applying to the astronaut program. Always moving forward.</blockquote><h4>Next Step: UT Austin</h4><p>My immediate academic goal is to transfer to the <strong>University of Texas at Austin</strong> for the Fall 2026 semester to continue my double major in Physics and Mathematics. UT Austin offers incredible resources and research opportunities that align perfectly with my aspirations in computational physics. The rigorous coursework there will serve as the ideal launchpad for graduate studies.</p><h4>Research and Academia</h4><p>Long-term, my sights are set on a career in academia and advanced research. I want to dive deep into computational physics, using high-performance computing to model complex physical systems. I believe that teaching and research go hand-in-hand, and I aim to become a professor who not only pushes the boundaries of human knowledge but also mentors the next generation of scientists.</p><h4>The Ultimate Frontier: Astronaut Program</h4><p>The ultimate goal—the dream that ties my love for physics, leadership, and exploration together—is to join the <strong>astronaut program</strong>. Ever since my grandfather first sparked my interest in astronomy, I've looked to the stars. Every academic challenge I take on and every leadership role I accept is a deliberate step toward building the physical, mental, and technical resilience required for space exploration.</p><h4>Physical Endurance: San Antonio Marathon</h4><p>Achieving these goals requires more than just mental sharpness; it requires extreme physical discipline. To test and build my endurance, I am currently training to run the <strong>San Antonio Marathon on December 6, 2026</strong>. The grueling training schedule teaches me the grit and sustained focus necessary to tackle years of rigorous physics research.</p>",
+            "gradient": "from-purple-400 to-violet-500",
+            "icon": "fas fa-rocket"
         }
     ]
 }
